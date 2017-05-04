@@ -1,7 +1,6 @@
 package de.hdm.thies.bankProjekt.shared.bo;
 
-import datatype.Long;
-import datatype.Boolean;
+
 import java.lang.Object;
 
 public class Vehicle extends BusinessObject {
