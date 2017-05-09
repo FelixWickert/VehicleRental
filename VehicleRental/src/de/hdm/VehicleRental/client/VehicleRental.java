@@ -5,9 +5,9 @@ import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
-import de.hdm.thies.bankProjekt.shared.VehicleRentalAdministrationAsync;
-import de.hdm.thies.bankProjekt.shared.ReportGeneratorAsync;
-import de.hdm.thies.bankProjekt.shared.bo.Profile;
+import de.hdm.VehicleRental.shared.ReportGeneratorAsync;
+import de.hdm.VehicleRental.shared.VehicleRentalAdministrationAsync;
+import de.hdm.VehicleRental.shared.bo.Profile;
 
 /**
  * Entry-Point-Klasse des Projekts <b>BankProjekt</b>.

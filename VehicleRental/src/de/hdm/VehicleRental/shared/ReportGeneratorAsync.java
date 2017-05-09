@@ -1,8 +1,9 @@
-package de.hdm.thies.bankProjekt.shared;
+package de.hdm.VehicleRental.shared;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import de.hdm.thies.bankProjekt.server.Profile;
-import de.hdm.thies.bankProjekt.server.VehicleRental;
+
+import de.hdm.VehicleRental.server.Profile;
+import de.hdm.VehicleRental.server.VehicleRental;
 
 /**
  * 

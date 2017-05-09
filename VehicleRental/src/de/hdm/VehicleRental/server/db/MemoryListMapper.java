@@ -1,8 +1,9 @@
-package de.hdm.thies.bankProjekt.server.db;
+package de.hdm.VehicleRental.server.db;
 
-import de.hdm.thies.bankProjekt.server.db.MemoryList;
-import de.hdm.thies.bankProjekt.server.db.Profile;
 import java.util.Vector;
+
+import de.hdm.VehicleRental.server.db.MemoryList;
+import de.hdm.VehicleRental.server.db.Profile;
 
 public class MemoryListMapper {
 

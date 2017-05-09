@@ -1,15 +1,16 @@
-package de.hdm.thies.bankProjekt.shared;
+package de.hdm.VehicleRental.shared;
 
+import de.hdm.VehicleRental.server.MemoryListMapper;
+import de.hdm.VehicleRental.server.Profile;
+import de.hdm.VehicleRental.server.ProfileMapper;
 import de.hdm.VehicleRental.server.RemoteServiceServlet;
-import de.hdm.thies.bankProjekt.server.ReservationMapper;
-import de.hdm.thies.bankProjekt.server.ProfileMapper;
-import de.hdm.thies.bankProjekt.server.MemoryListMapper;
-import de.hdm.thies.bankProjekt.server.VehicleRental;
-import de.hdm.thies.bankProjekt.server.VehicleMapper;
-import de.hdm.thies.bankProjekt.server.db.MemoryList;
+import de.hdm.VehicleRental.server.ReservationMapper;
+import de.hdm.VehicleRental.server.VehicleMapper;
+import de.hdm.VehicleRental.server.VehicleRental;
+import de.hdm.VehicleRental.server.db.MemoryList;
+
 import java.util.Vector;
-import de.hdm.thies.bankProjekt.server.Profile;
-import de.hdm.thies.bankProjekt.server.Reservation;
+
 import datatype.Vehicle;
 import de.hdm.VehicleRental.shared.bo.Reservation;
 

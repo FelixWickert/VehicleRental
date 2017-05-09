@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.shared;
+package de.hdm.VehicleRental.shared;
 
 public interface RemoteService { 
 

@@ -1,11 +1,11 @@
-package de.hdm.thies.bankProjekt.server.report;
+package de.hdm.VehicleRental.server.report;
 
-import de.hdm.thies.bankProjekt.shared.VehicleRentalAdministration;
-import de.hdm.thies.bankProjekt.shared.report.MemoryListOfProfileReport;
-import de.hdm.thies.bankProjekt.shared.report.ReservationOfProfileReport;
-import de.hdm.thies.bankProjekt.server.report.VehicleRental;
-import de.hdm.thies.bankProjekt.server.report.AllProfilesReport;
-import de.hdm.thies.bankProjekt.server.report.Profile;
+import de.hdm.VehicleRental.server.report.AllProfilesReport;
+import de.hdm.VehicleRental.server.report.Profile;
+import de.hdm.VehicleRental.server.report.VehicleRental;
+import de.hdm.VehicleRental.shared.VehicleRentalAdministration;
+import de.hdm.VehicleRental.shared.report.MemoryListOfProfileReport;
+import de.hdm.VehicleRental.shared.report.ReservationOfProfileReport;
 
 public class ReportGeneratorImpl extends RemoteServiceServlet implements ReportGenerator {
 

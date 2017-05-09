@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.shared.report;
+package de.hdm.VehicleRental.shared.report;
 
 import datatype.Long;
 

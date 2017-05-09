@@ -1,8 +1,8 @@
-package de.hdm.thies.bankProjekt.shared;
+package de.hdm.VehicleRental.shared;
 
-import de.hdm.thies.bankProjekt.shared.report.MemoryListOfProfileReport;
 import de.hdm.VehicleRental.shared.bo.Profile;
-import de.hdm.thies.bankProjekt.shared.report.ReservationOfProfileReport;
+import de.hdm.VehicleRental.shared.report.MemoryListOfProfileReport;
+import de.hdm.VehicleRental.shared.report.ReservationOfProfileReport;
 
 /**
  * 

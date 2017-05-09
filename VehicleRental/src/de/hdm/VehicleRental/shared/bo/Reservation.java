@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.shared.bo;
+package de.hdm.VehicleRental.shared.bo;
 
 import datatype.Long;
 import java.util.Vector;

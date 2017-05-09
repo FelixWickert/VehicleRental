@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.server;
+package de.hdm.VehicleRental.server;
 
 public class RemoteServiceServlet { 
 

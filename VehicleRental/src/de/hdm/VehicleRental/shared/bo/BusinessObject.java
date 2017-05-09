@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.shared.bo;
+package de.hdm.VehicleRental.shared.bo;
 
 import java.io.Serializable;
 import datatype.Long;

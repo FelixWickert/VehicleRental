@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.server.report;
+package de.hdm.VehicleRental.server.report;
 
 public interface ReportGenerator { 
 

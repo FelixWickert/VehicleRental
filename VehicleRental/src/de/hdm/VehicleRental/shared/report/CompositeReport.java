@@ -1,7 +1,7 @@
-package de.hdm.thies.bankProjekt.shared.report;
+package de.hdm.VehicleRental.shared.report;
 
-import de.hdm.thies.bankProjekt.shared.report.Vector;
 import datatype.Long;
+import de.hdm.VehicleRental.shared.report.Vector;
 import datatype.Integer;
 
 public abstract class CompositeReport extends Report implements Serializable {

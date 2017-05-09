@@ -1,4 +1,4 @@
-package de.hdm.thies.bankProjekt.server.db;
+package de.hdm.VehicleRental.server.db;
 
 import datatype.Integer;
 import java.util.Vector;
