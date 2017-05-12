@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import de.hdm.VehicleRental.server.db.MemoryList;
 import de.hdm.VehicleRental.server.db.Profile;
+import de.hdm.VehicleRental.shared.bo.Vehicle;
 
 public class MemoryListMapper {
 
@@ -48,7 +49,7 @@ public class MemoryListMapper {
 	 * @param memoryListID 
 	 * @return 
 	 */
-	public MemoryList insert(MemoryList memoryListID) { 
+	public MemoryListMapper insert(MemoryListMapper memoryListID) { 
 		// TODO Auto-generated method
 		return null;
 	 }
@@ -98,7 +99,7 @@ public class MemoryListMapper {
 	 * @param memoryListID 
 	 * @return 
 	 */
-	public MemoryList update(MemoryList memoryListID) { 
+	public MemoryListMapper update(MemoryListMapper memoryListID) { 
 		// TODO Auto-generated method
 		return null;
 	 }
@@ -127,7 +128,7 @@ public class MemoryListMapper {
 	 * @param memoryListID 
 	 * @param vehicleID 
 	 */
-	public void deleteVehicleFromList(MemoryList memoryListID, Vehicle vehicleID) { 
+	public void deleteVehicleFromList(MemoryListMapper memoryListID, Vehicle vehicleID) { 
 		// TODO Auto-generated method
 	 }
 
@@ -143,7 +144,7 @@ public class MemoryListMapper {
 	 * @param memoryListID 
 	 * @return 
 	 */
-	public MemoryList findByID(int memoryListID) { 
+	public MemoryListMapper findByID(int memoryListID) { 
 		// TODO Auto-generated method
 		return null;
 	 } 
