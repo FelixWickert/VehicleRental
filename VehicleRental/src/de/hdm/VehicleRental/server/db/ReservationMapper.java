@@ -1,6 +1,5 @@
 package de.hdm.VehicleRental.server.db;
 
-import datatype.Integer;
 import java.util.Vector;
 
 public class ReservationMapper {
@@ -43,7 +42,7 @@ public class ReservationMapper {
 	 * @param reservationID 
 	 * @return 
 	 */
-	public Reservation update(Integer reservationID) { 
+	public ReservationMapper update(Integer reservationID) { 
 		// TODO Auto-generated method
 		return null;
 	 }
@@ -96,7 +95,7 @@ public class ReservationMapper {
 	 * @param reservationID 
 	 * @return 
 	 */
-	public Reservation findByID(int reservationID) { 
+	public ReservationMapper findByID(int reservationID) { 
 		// TODO Auto-generated method
 		return null;
 	 }
@@ -109,7 +108,7 @@ public class ReservationMapper {
 	   
 	 * @param reservationID 
 	 */
-	public void delete(Reservation reservationID) { 
+	public void delete(ReservationMapper reservationID) { 
 		// TODO Auto-generated method
 	 }
 
@@ -126,7 +125,7 @@ public class ReservationMapper {
 	 * @param reservationID 
 	 * @return 
 	 */
-	public Reservation insert(Reservation reservationID) { 
+	public ReservationMapper insert(ReservationMapper reservationID) { 
 		// TODO Auto-generated method
 		return null;
 	 } 
