@@ -113,15 +113,29 @@ public class ProfileMapper {
 	 * 
 	 * LÃ¶schen der Daten eines <code>Account</code>-Objekts aus der Datenbank.
 	 * 
-	 * @param a
+	 * @param profileID
 	 *            das aus der DB zu lÃ¶schende "Objekt"
 	 * 
-	 * @param profileID
 	 */
 	public void delete(Profile profileID) {
-		// TODO Auto-generated method
-	}
+		// DB-Verbindung holen
+		Connection con = DBConnection.connection();
 
+		try {
+			// Leeres SQL-Statement (JDBC) anlegen
+						Statement stmt = con.createStatement();
+			
+			stmt.executeUpdate("DELETE FROM profil " + "WHERE ProfilID= " + profileID.getId());
+
+		} catch (SQLException e2) {
+			e2.printStackTrace();	
+			}	
+		}
+	
+
+	
+
+	
 	/**
 	 * 
 	 * Wiederholtes Schreiben eines Objekts in die Datenbank.
