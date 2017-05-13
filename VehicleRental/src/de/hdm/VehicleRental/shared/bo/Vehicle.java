@@ -9,6 +9,16 @@ public class Vehicle extends BusinessObject {
 	 * 
 	 */
 	private String vehicleModel;
+	
+	public String getBrand() {
+		return Brand;
+	}
+	public void setBrand(String brand) {
+		Brand = brand;
+	}
+	private String Brand;
+	
+	
 	/**
 	 * 
 	 */
