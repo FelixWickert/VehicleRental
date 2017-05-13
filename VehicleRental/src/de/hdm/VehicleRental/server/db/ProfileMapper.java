@@ -43,7 +43,7 @@ public class ProfileMapper {
 	 * 
 	 * @return freeTextMapper
 	 */
-	public static ProfileMapper profileMapper() {
+	public static ProfileMapper ProfileMapper() {
 		if (profileMapper == null) {
 			profileMapper = new ProfileMapper();
 		}
