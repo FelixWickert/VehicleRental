@@ -1,11 +1,12 @@
 package de.hdm.VehicleRental.shared.bo;
 
-import datatype.Integer;
-import datatype.Long;
 import java.util.Vector;
 
 public class MemoryList extends BusinessObject {
 
+	private static final Long serialVersionUID = 1l;
+	
+	
 	/**
 	 * 
 	   * Fremdschlüsselbeziehung zum Quellkonto.
@@ -15,7 +16,7 @@ public class MemoryList extends BusinessObject {
 	/**
 	 * 
 	 */
-	private static final Long serialVersionUID;
+
 	/**
 	 * 
 	   * Fremdschlüsselbeziehung zum Zielkonto.
@@ -44,12 +45,7 @@ public class MemoryList extends BusinessObject {
 	public Long getSerialVersionUID() {
 	 	 return serialVersionUID; 
 	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 	 * @return 
@@ -126,10 +122,5 @@ public class MemoryList extends BusinessObject {
 	 */
 	public void setTargetVehicleID(int vehicleID) { 
 		// TODO Auto-generated method
-	 }
-	public int getTargetVehicleID() { 
-		// TODO Auto-generated method
-		return 0;
 	 } 
-
 }
