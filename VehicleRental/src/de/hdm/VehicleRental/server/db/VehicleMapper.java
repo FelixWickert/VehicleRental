@@ -1,6 +1,9 @@
 package de.hdm.VehicleRental.server.db;
 
+
 import java.util.Vector;
+
+import de.hdm.VehicleRental.shared.bo.Profile;
 import de.hdm.VehicleRental.shared.bo.Vehicle;
 import de.hdm.VehicleRental.server.db.DBConnection;
 import java.sql.*;
@@ -44,7 +47,6 @@ public class VehicleMapper {
 	}
 
 	
-
 	public Vehicle insert(Vehicle v) {
 	Connection con = DBConnection.connection();
 
@@ -69,7 +71,7 @@ public class VehicleMapper {
 
 			// Jetzt erst erfolgt die tats�chliche Einf�geoperation
 			stmt.executeUpdate("INSERT INTO profil (Marke, AutoID, FZGTyp, Leistung) " + "VALUES ("
-					+ v.getBrand() + ",'" + v.getVehicleID() + "', " + v.getVehicleModel() + ", '" + v.getVehiclePerformance() + "', " + ")");
+					+ v.getBrand() + ",'" + v.getVehicleID() + "', " + v.getVehicleModel() + ", '" + v.getVehiclePerformance() + "'" + ")");
 		}
 	} catch (SQLException e2) {
 		e2.printStackTrace();
@@ -80,28 +82,20 @@ public class VehicleMapper {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void delete(Vehicle vehicleID) {
+		// DB-Verbindung holen
+		Connection con = DBConnection.connection();
+
+		try {
+			// Leeres SQL-Statement (JDBC) anlegen
+						Statement stmt = con.createStatement();
+			
+			stmt.executeUpdate("DELETE FROM profil " + "WHERE autoID= " + vehicleID.getId());
+
+		} catch (SQLException e2) {
+			e2.printStackTrace();	
+			}	
+		}
 	
 	
 	
@@ -118,10 +112,42 @@ public class VehicleMapper {
 	 * @param vehicleID 
 	 * @return 
 	 */
-	public Vehicle findByID(int vehicleID) { 
-		// TODO Auto-generated method
+	public Vehicle findByID(int vehicleID) {
+		// DB-Verbindung holen
+		Connection con = DBConnection.connection();
+
+		try {
+			// Leeres SQL-Statement (JDBC) anlegen
+			Statement stmt = con.createStatement();
+
+			// Statement ausfüllen und als Query an die DB schicken
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `auto` WHERE autoID = " + vehicleID);
+
+			/*
+			 * Da id Primärschlüssel ist, kann max. nur ein Tupel
+			 * zurückgegeben werden. Prüfe, ob ein Ergebnis vorliegt.
+			 */
+			if (rs.next()) {
+				// Ergebnis-Tupel in Objekt umwandeln
+				Vehicle a = new Vehicle();
+				a.setId(rs.getInt("ID"));
+				a.setBrand(rs.getString("Marke"));
+				return a;
+			}
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+			return null;
+		}
+
 		return null;
-	 }
+
+	}
+	
+	
+	
+	
+
+
 
 	/**
 	 * 
@@ -174,31 +200,8 @@ public class VehicleMapper {
 		return null;
 	 }
 
-	/**
-	 * 
-	   * Löschen der Daten eines <code>Customer</code>-Objekts aus der Datenbank.
-	   * 
-	   * @param c das aus der DB zu löschende "Objekt"
-	   
-	 * @param vehicleID 
-	 */
-	public void delete(Vehicle vehicleID) { 
-		// TODO Auto-generated method
-	 }
 
-	/**
-	 * 
-	   * Einfügen eines <code>Customer</code>-Objekts in die Datenbank. Dabei wird
-	   * auch der Primärschlüssel des übergebenen Objekts geprüft und ggf.
-	   * berichtigt.
-	   * 
-	   * @param c das zu speichernde Objekt
-	   * @return das bereits übergebene Objekt, jedoch mit ggf. korrigierter
-	   *         <code>id</code>.
-	   
-	 * @param vehicleID 
-	 * @return 
-	 */
+
 
 
 }
