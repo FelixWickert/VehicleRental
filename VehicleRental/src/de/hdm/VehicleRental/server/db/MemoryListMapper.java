@@ -22,12 +22,7 @@ public class MemoryListMapper {
 	 */
 	private static MemoryListMapper memoryListMapper;
 
-	/**
-	 * Getter of memoryListMapper
-	 */
-	public MemoryListMapper getMemoryListMapper() {
-	 	 return memoryListMapper; 
-	}
+
 
 	/**
 	 * Setter of memoryListMapper
