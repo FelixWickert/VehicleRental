@@ -1,6 +1,10 @@
 package de.hdm.VehicleRental.server.db;
 
 import java.util.Vector;
+import de.hdm.VehicleRental.shared.bo.Vehicle;
+import de.hdm.VehicleRental.server.db.DBConnection;
+import java.sql.*;
+
 
 public class VehicleMapper {
 
@@ -16,22 +20,92 @@ public class VehicleMapper {
 	   * @see accountMapper()
 	   
 	 */
-	private static VehicleMapper vehicleMapper;
+	private static VehicleMapper vehicleMapper = null;
+
 
 	/**
-	 * Getter of vehicleMapper
+	 * Der Null-Konstruktor mit dem Accessmodifier protected. Dadurch kÃ¶nnen
+	 * nur die Klassen in dem selben Package auf diese Methode zugreifen.
 	 */
-	public VehicleMapper getVehicleMapper() {
-	 	 return vehicleMapper; 
+	protected VehicleMapper() {
 	}
-
+	
+	
 	/**
-	 * Setter of vehicleMapper
+	 * Hier wird die Instanz erstellt, sofern keine vorhanden ist.
+	 * 
+	 * @return freeTextMapper
 	 */
-	public void setVehicleMapper(VehicleMapper vehicleMapper) { 
-		 this.vehicleMapper = vehicleMapper; 
+	public static VehicleMapper VehicleMapper() {
+		if (vehicleMapper == null) {
+			vehicleMapper = new VehicleMapper();
+		}
+		return vehicleMapper;
 	}
 
+	
+
+	public Vehicle insert(Vehicle v) {
+	Connection con = DBConnection.connection();
+
+	try {
+		Statement stmt = con.createStatement();
+
+		/*
+		 * Zunächst schauen wir nach, welches der momentan höchste
+		 * Primärschlüsselwert ist.
+		 */
+		ResultSet rs = stmt.executeQuery("SELECT MAX(AutoID) AS maxid " + "FROM auto");
+
+		// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
+		if (rs.next()) {
+			/*
+			 * a erhält den bisher maximalen, nun um 1 inkrementierten
+			 * Primärschlüssel.
+			 */
+			v.setId(rs.getInt("maxid") + 1);
+
+			stmt = con.createStatement();
+
+			// Jetzt erst erfolgt die tatsächliche Einfügeoperation
+			stmt.executeUpdate("INSERT INTO profil (Marke, AutoID, FZGTyp, Leistung) " + "VALUES ("
+					+ v.getBrand() + ",'" + v.getVehicleID() + "', " + v.getVehicleModel() + ", '" + v.getVehiclePerformance() + "', " + ")");
+		}
+	} catch (SQLException e2) {
+		e2.printStackTrace();
+	}
+	return v;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * 
 	   * Suchen eines Kunden mit vorgegebener Kundennummer. Da diese eindeutig ist,
@@ -125,9 +199,6 @@ public class VehicleMapper {
 	 * @param vehicleID 
 	 * @return 
 	 */
-	public Vehicle insert(Vehicle vehicleID) { 
-		// TODO Auto-generated method
-		return null;
-	 } 
+
 
 }
