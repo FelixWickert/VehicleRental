@@ -2,8 +2,6 @@ package de.hdm.VehicleRental.server.db;
 
 
 import java.util.Vector;
-
-import de.hdm.VehicleRental.shared.bo.Profile;
 import de.hdm.VehicleRental.shared.bo.Vehicle;
 import de.hdm.VehicleRental.server.db.DBConnection;
 import java.sql.*;
@@ -13,21 +11,20 @@ public class VehicleMapper {
 
 	/**
 	 * 
-	   * Die Klasse CustomerMapper wird nur einmal instantiiert. Man spricht hierbei
+	   * Die Klasse VehicleMapper wird nur einmal instantiiert. Man spricht hierbei
 	   * von einem sogenannten <b>Singleton</b>.
 	   * <p>
-	   * Diese Variable ist durch den Bezeichner <code>static</code> nur einmal für
-	   * sämtliche eventuellen Instanzen dieser Klasse vorhanden. Sie speichert die
+	   * Diese Variable ist durch den Bezeichner <code>static</code> nur einmal fÃ¼r
+	   * sÃ¤mtliche eventuellen Instanzen dieser Klasse vorhanden. Sie speichert die
 	   * einzige Instanz dieser Klasse.
 	   * 
 	   * @see accountMapper()
 	   
 	 */
 	private static VehicleMapper vehicleMapper = null;
-
-
+	
 	/**
-	 * Der Null-Konstruktor mit dem Accessmodifier protected. Dadurch können
+	 * Der Null-Konstruktor mit dem Accessmodifier protected. Dadurch kÃ¶nnen
 	 * nur die Klassen in dem selben Package auf diese Methode zugreifen.
 	 */
 	protected VehicleMapper() {
@@ -46,42 +43,73 @@ public class VehicleMapper {
 		return vehicleMapper;
 	}
 
-	
+	/**
+	 * 
+	 * EinfÃ¼gen eines <code>Vehicle</code>-Objekts in die Datenbank. Dabei wird
+	 * auch der PrimÃ¤rschlÃ¼ssel des Ã¼bergebenen Objekts geprÃ¼ft und ggf.
+	 * berichtigt.
+	 * 
+	 * @param a
+	 *            das zu speichernde Objekt
+	 * @return das bereits Ã¼bergebene Objekt, jedoch mit ggf. korrigierter
+	 *         <code>id</code>.
+	 * 
+	 * @param vehicleID
+	 * @return
+	 */
 	public Vehicle insert(Vehicle v) {
 	Connection con = DBConnection.connection();
 
 	try {
 		Statement stmt = con.createStatement();
-
 		/*
-		 * Zun�chst schauen wir nach, welches der momentan h�chste
-		 * Prim�rschl�sselwert ist.
+		 * Zunächst schauen wir nach, welches der momentan höchste
+		 * Primärschlüsselwert ist.
 		 */
 		ResultSet rs = stmt.executeQuery("SELECT MAX(AutoID) AS maxid " + "FROM auto");
-
-		// Wenn wir etwas zur�ckerhalten, kann dies nur einzeilig sein
+		
+		// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
 		if (rs.next()) {
 			/*
-			 * a erh�lt den bisher maximalen, nun um 1 inkrementierten
-			 * Prim�rschl�ssel.
+			 * a erhält den bisher maximalen, nun um 1 inkrementierten
+			 * Primärschlüssel.
 			 */
 			v.setId(rs.getInt("maxid") + 1);
-
 			stmt = con.createStatement();
 
-			// Jetzt erst erfolgt die tats�chliche Einf�geoperation
-			stmt.executeUpdate("INSERT INTO profil (Marke, AutoID, FZGTyp, Leistung) " + "VALUES ("
-					+ v.getBrand() + ",'" + v.getVehicleID() + "', " + v.getVehicleModel() + ", '" + v.getVehiclePerformance() + "'" + ")");
+			// Jetzt erst erfolgt die tatsächliche Einfügeoperation
+			stmt.executeUpdate("INSERT INTO auto (Marke, AutoID, FZGTyp, Leistung) " + "VALUES ('"
+					+ v.getBrand() + "'," 
+					+ v.getId() + ", '" 
+					+ v.getVehicleModel() + "', " 
+					+ v.getVehiclePerformance() + "" + ")");
 		}
 	} catch (SQLException e2) {
 		e2.printStackTrace();
 	}
+	/*
+	 * Rückgabe, des evtl. korrigierten Accounts.
+	 * 
+	 * HINWEIS: Da in Java nur Referenzen auf Objekte und keine physischen
+	 * Objekte übergeben werden, wäre die Anpassung des Account-Objekts auch
+	 * ohne diese explizite Rückgabe au�erhalb dieser Methode sichtbar. Die
+	 * explizite Rückgabe von a ist eher ein Stilmittel, um zu
+	 * signalisieren, dass sich das Objekt evtl. im Laufe der Methode
+	 * verändert hat.
+	 */
 	return v;
 }
 	
 	
 	
-	
+	/**
+	 * 
+	 * LÃ¶schen der Daten eines <code>Vehicle</code>-Objekts aus der Datenbank.
+	 * 
+	 * @param vehicleID
+	 *            das aus der DB zu lÃ¶schende "Objekt"
+	 * 
+	 */
 	public void delete(Vehicle vehicleID) {
 		// DB-Verbindung holen
 		Connection con = DBConnection.connection();
@@ -90,27 +118,61 @@ public class VehicleMapper {
 			// Leeres SQL-Statement (JDBC) anlegen
 						Statement stmt = con.createStatement();
 			
-			stmt.executeUpdate("DELETE FROM profil " + "WHERE autoID= " + vehicleID.getId());
+			stmt.executeUpdate("DELETE FROM auto " + "WHERE AutoID= " + vehicleID.getId());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();	
 			}	
 		}
-	
-	
+
 	
 	
 	/**
 	 * 
-	   * Suchen eines Kunden mit vorgegebener Kundennummer. Da diese eindeutig ist,
-	   * wird genau ein Objekt zur�ckgegeben.
+	   * Wiederholtes Schreiben eines Objekts in die Datenbank.
 	   * 
-	   * @param id Primärschlüsselattribut (->DB)
-	   * @return Kunden-Objekt, das dem übergebenen Schlüssel entspricht, null bei
-	   *         nicht vorhandenem DB-Tupel.
+	   * @param c das Objekt, das in die DB geschrieben werden soll
+	   * @return das als Parameter Ã¼bergebene Objekt
 	   
 	 * @param vehicleID 
 	 * @return 
+	 */
+	public Vehicle update(Vehicle vehicleID) { 
+		Connection con = DBConnection.connection();
+		try {
+			Statement stmt = con.createStatement();
+			
+			/*
+			 * Informationen werden in die Datenbank geschrieben Als erstes
+			 * werden die Profilattribute gesetzt 
+			 */
+			stmt.executeUpdate("UPDATE profil SET " + 
+			 "AutoID= " + 		 		vehicleID.getId() + ", " + 
+			 "Marke= '" + 			 	vehicleID.getBrand() + "', " + 
+			 "FZGTyp= '" + 				vehicleID.getVehicleCategory() + "', " + 
+			 "Leistung= '" + 		 	vehicleID.getVehiclePerformance() + "', " + 
+			 " WHERE AutoID = " +  		vehicleID.getId());
+	 
+			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		/* RÃ¼ckgabe des Ergebnis */
+		return vehicleID;
+	}
+	
+	/**
+	 * 
+	 * Suchen eines Fahrzeugs mit vorgegebener ID. Da diese eindeutig ist,
+	 * wird genau ein Objekt zurï¿½ckgegeben.
+	 * 
+	 * @param id
+	 *            PrimÃ¤rschlÃ¼sselattribut (->DB)
+	 * @return Konto-Objekt, das dem Ã¼bergebenen SchlÃ¼ssel entspricht, null
+	 *         bei nicht vorhandenem DB-Tupel.
+	 * 
+	 * @param vehicleID
+	 * @return
 	 */
 	public Vehicle findByID(int vehicleID) {
 		// DB-Verbindung holen
@@ -120,88 +182,74 @@ public class VehicleMapper {
 			// Leeres SQL-Statement (JDBC) anlegen
 			Statement stmt = con.createStatement();
 
-			// Statement ausfüllen und als Query an die DB schicken
+			// Statement ausfÃ¼llen und als Query an die DB schicken
 			ResultSet rs = stmt.executeQuery("SELECT * FROM `auto` WHERE autoID = " + vehicleID);
 
 			/*
-			 * Da id Primärschlüssel ist, kann max. nur ein Tupel
-			 * zurückgegeben werden. Prüfe, ob ein Ergebnis vorliegt.
+			 * Da id PrimÃ¤rschlÃ¼ssel ist, kann max. nur ein Tupel
+			 * zurÃ¼ckgegeben werden. PrÃ¼fe, ob ein Ergebnis vorliegt.
 			 */
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Vehicle a = new Vehicle();
 				a.setId(rs.getInt("ID"));
 				a.setBrand(rs.getString("Marke"));
+				a.setVehicleCategory(rs.getString("FZGTyp"));
+				a.setVehiclePerformance(rs.getInt("Leistung"));
 				return a;
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 			return null;
 		}
-
 		return null;
-
 	}
 	
-	
-	
-	
-
-
 
 	/**
 	 * 
-	   * Wiederholtes Schreiben eines Objekts in die Datenbank.
+	   * Auslesen aller Fahrzeuge.
 	   * 
-	   * @param c das Objekt, das in die DB geschrieben werden soll
-	   * @return das als Parameter übergebene Objekt
-	   
-	 * @param vehicleID 
-	 * @return 
-	 */
-	public Vehicle update(Vehicle vehicleID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-
-	/**
-	 * 
-	   * Auslesen aller Kunden.
-	   * 
-	   * @return Ein Vektor mit Customer-Objekten, die sämtliche Kunden
-	   *         repräsentieren. Bei evtl. Exceptions wird ein partiell gef�llter
-	   *         oder ggf. auch leerer Vetor zurückgeliefert.
+	   * @return Ein Vektor mit Vehicle-Objekten, die sÃ¤mtliche Fahrzeuge
+	   *         reprÃ¤sentieren. Bei evtl. Exceptions wird ein partiell gefï¿½llter
+	   *         oder ggf. auch leerer Vetor zurÃ¼ckgeliefert.
 	   
 	 * @return 
 	 */
-	public Vector findAll() { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	public Vector<Vehicle> getAllVehicles() {
+		Vector<Vehicle> result = new Vector<Vehicle>();
 
-	/**
-	 * 
-	   * Diese statische Methode kann aufgrufen werden durch
-	   * <code>CustomerMapper.customerMapper()</code>. Sie stellt die
-	   * Singleton-Eigenschaft sicher, indem Sie dafür sorgt, dass nur eine einzige
-	   * Instanz von <code>CustomerMapper</code> existiert.
-	   * <p>
-	   * 
-	   * <b>Fazit:</b> CustomerMapper sollte nicht mittels <code>new</code>
-	   * instantiiert werden, sondern stets durch Aufruf dieser statischen Methode.
-	   * 
-	   * @return DAS <code>CustomerMapper</code>-Objekt.
-	   * @see customerMapper
-	   
-	 * @return 
-	 */
-	public static VehicleMapper vehicleMapper() { 
-		// TODO Auto-generated method
-		return null;
-	 }
+		/* Datenbankverbindung wird geholt */
+		Connection con = DBConnection.connection();
 
+		try {
+			/* Leeres Statement wird angelegt */
+			Statement stmt = con.createStatement();
 
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM auto");
 
-
+			/*
+			 * FÃ¼r jeden Eintrag im Suchergebnis wird nun ein UserProfile-Objekt
+			 * erstellt.
+			 */
+			while (rs.next()) {
+				// Ergebnis-Tupel in Objekt umwandeln
+				Vehicle p = new Vehicle();
+				p.setId(rs.getInt("AutoID"));
+				p.setBrand(rs.getString("Marke"));
+				p.setVehicleCategory(rs.getString("FZGTyp"));
+				p.setVehiclePerformance(rs.getInt("Leistung"));
+			
+				/* HinzufÃ¼gen des neuen Objekts zum Ergebnisvektor */
+				result.addElement(p);
+			}
+			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}
+		/* Ergebnisvektor zurÃ¼ckgeben */
+		return result;
+	}
 
 }
