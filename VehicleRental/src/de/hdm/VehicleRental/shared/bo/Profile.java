@@ -1,6 +1,11 @@
 package de.hdm.VehicleRental.shared.bo;
 
+import java.util.Vector;
+
 public class Profile extends BusinessObject {
+private Vector<Vehicle> favoritenListe = new Vector<>(); 
+
+
 
 	/**
 	 * 
