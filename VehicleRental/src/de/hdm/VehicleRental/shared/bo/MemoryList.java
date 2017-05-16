@@ -12,7 +12,7 @@ public class MemoryList extends BusinessObject {
 	   * Fremdschlüsselbeziehung zum Quellkonto.
 	   
 	 */
-	private Integer sourceProfileID;
+	private int sourceProfileID;
 	/**
 	 * 
 	 */
@@ -22,41 +22,73 @@ public class MemoryList extends BusinessObject {
 	   * Fremdschlüsselbeziehung zum Zielkonto.
 	   
 	 */
-	private Integer targetVehicleID;
+	private int targetVehicleID;
 	/**
 	 * 
 	 */
+	
+	public int memoryListID;
+	
+	public int vehicleID;
+	
+	public int profileID;
+	
+	
+	public int getProfileID() {
+		return profileID;
+	}
+
+
+	public void setProfileID(int profileID) {
+		this.profileID = profileID;
+	}
+
+
+	public int getVehicleID() {
+		return vehicleID;
+	}
+
+
+	public void setVehicleID(int vehicleID) {
+		this.vehicleID = vehicleID;
+	}
+
+
+	public int getMemoryListID() {
+		return memoryListID;
+	}
+	
+	
+	public void setMemoryListID(int memoryListID) {
+		this.memoryListID = memoryListID;
+	}
+	
+	
 	private Vector allVehiclesForProfile;
 	/**
 	 * Getter of sourceProfileID
 	 */
-	public Integer getSourceProfileID() {
+	public int getSourceProfileID() {
 	 	 return sourceProfileID; 
 	}
 	/**
 	 * Setter of sourceProfileID
 	 */
-	public void setSourceProfileID(Integer sourceProfileID) { 
+	public void setSourceProfileID(int sourceProfileID) { 
 		 this.sourceProfileID = sourceProfileID; 
-	}
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
 	}
 
 	/**
 	 * 
 	 * @return 
 	 */
-	public Integer getTargetVehicleID() {
+	public int getTargetVehicleID() {
 	 	 return targetVehicleID; 
 	}
 	/**
 	 * Setter of targetVehicleID
 	 */
-	public void setTargetVehicleID(Integer targetVehicleID) { 
+	public void setTargetVehicleID(int targetVehicleID) { 
 		 this.targetVehicleID = targetVehicleID; 
 	}
 	/**
@@ -103,24 +135,4 @@ public class MemoryList extends BusinessObject {
 		// TODO Auto-generated method
 		return 0;
 	 }
-	/**
-	 * 
-	   * Setzen des Fremdschlüssels des Quellkontos.
-	   * @param sourceID der Fremdschlüssel
-	   
-	 * @param profileID 
-	 */
-	public void setSourceProfileID(int profileID) { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	   * Setzen des Fremdschlüssels des Zielkontos.
-	   * @param targetID der Fremdschlüssel
-	   
-	 * @param vehicleID 
-	 */
-	public void setTargetVehicleID(int vehicleID) { 
-		// TODO Auto-generated method
-	 } 
 }
