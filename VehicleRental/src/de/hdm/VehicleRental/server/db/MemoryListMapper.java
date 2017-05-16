@@ -1,10 +1,13 @@
 package de.hdm.VehicleRental.server.db;
 
-import java.util.Vector;
 
-import de.hdm.VehicleRental.server.db.MemoryList;
-import de.hdm.VehicleRental.server.db.Profile;
+import java.util.Vector;
+import de.hdm.VehicleRental.server.db.DBConnection;
+import java.sql.*;
+import de.hdm.VehicleRental.shared.bo.MemoryList;
+import de.hdm.VehicleRental.shared.bo.Profile;
 import de.hdm.VehicleRental.shared.bo.Vehicle;
+
 
 public class MemoryListMapper {
 
@@ -23,14 +26,6 @@ public class MemoryListMapper {
 	private static MemoryListMapper memoryListMapper;
 
 
-
-	/**
-	 * Setter of memoryListMapper
-	 */
-	public void setMemoryListMapper(MemoryListMapper memoryListMapper) { 
-		 this.memoryListMapper = memoryListMapper; 
-	}
-
 	/**
 	 * 
 	   * EinfÃ¼gen eines <code>Transaction</code>-Objekts in die Datenbank. Dabei
@@ -44,10 +39,39 @@ public class MemoryListMapper {
 	 * @param memoryListID 
 	 * @return 
 	 */
-	public MemoryListMapper insert(MemoryListMapper memoryListID) { 
-		// TODO Auto-generated method
-		return null;
+	public MemoryListMapper insert(MemoryList ml) { 
+		Connection con = DBConnection.connection();
+
+		try {
+			Statement stmt = con.createStatement();
+
+			/*
+			 * Zunächst schauen wir nach, welches der momentan höchste
+			 * Primärschlüsselwert ist.
+			 */
+			ResultSet rs = stmt.executeQuery("SELECT MAX(MerklisteID) AS maxid " + "FROM merklsite");
+
+			// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
+			if (rs.next()) {
+				/*
+				 * a erhält den bisher maximalen, nun um 1 inkrementierten
+				 * Primärschlüssel.
+				 */
+				ml.setMemoryListID(rs.getInt("maxid") + 1);
+
+				stmt = con.createStatement();
+
+				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
+				stmt.executeUpdate("INSERT INTO MemoryList (MerkListeID, AutoID, ProfilID) " + "VALUES ("
+						+ ml.getMemoryListID()() + ",'" + ml.getVehicleID() + "', " + ml.getProfileID() + " ")");
+			}
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+
+		}
+
 	 }
+
 
 	/**
 	 * 
