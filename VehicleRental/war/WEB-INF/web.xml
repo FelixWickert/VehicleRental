@@ -2,28 +2,28 @@
 
   <!-- Servlets -->
   <servlet>
-    <servlet-name>bankVerwaltungServlet</servlet-name>
-    <servlet-class>de.hdm.thies.bankProjekt.server.BankAdministrationImpl</servlet-class>
+    <servlet-name>VehicleRentalAdministrationServlet</servlet-name>
+    <servlet-class>de.hdm.VehicleRental.server.VehicleRentalAdministrationImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>bankVerwaltungServlet</servlet-name>
-    <url-pattern>/bankprojekt_2_0/bankadministration</url-pattern>
+    <servlet-name>VehicleRentalServlet</servlet-name>
+    <url-pattern>/VehicleRental/VehicleRentalAdministration</url-pattern>
   </servlet-mapping>
   
   <servlet>
     <servlet-name>reportGeneratorServlet</servlet-name>
-    <servlet-class>de.hdm.thies.bankProjekt.server.report.ReportGeneratorImpl</servlet-class>
+    <servlet-class>de.hdm.VehicleRental.server.report.ReportGeneratorImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>reportGeneratorServlet</servlet-name>
-    <url-pattern>/bankprojekt_2_0/reportgenerator</url-pattern>
+    <url-pattern>/VehicleRental/reportgenerator</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>BankProjekt.html</welcome-file>
+    <welcome-file>VehicleRental.html</welcome-file>
   </welcome-file-list>
 
   <servlet>
