@@ -12,27 +12,27 @@ public class ClientsideSettings extends CommonSettings {
 	   * Name des Client-seitigen Loggers.
 	   
 	 */
-	private static final String LOGGER_NAME;
+	private static final String LOGGER_NAME = "VehicleRental";
 	/**
 	 * 
 	   * Remote Service Proxy zur Verbindungsaufnahme mit dem Server-seitgen Dienst
 	   * namens <code>BankAdministration</code>.
 	   
 	 */
-	private static VehicleRentalAdministrationAsync vehicleRentalVerwaltung;
+	private static VehicleRentalAdministrationAsync vehicleRentalVerwaltung = null;
 	/**
 	 * 
 	   * Instanz des Client-seitigen Loggers.
 	   
 	 */
-	private static final Logger log;
+	private static final Logger log = Logger.getLogger(LOGGER_NAME);
 	/**
 	 * 
 	   * Remote Service Proxy zur Verbindungsaufnahme mit dem Server-seitgen Dienst
 	   * namens <code>ReportGenerator</code>.
 	   
 	 */
-	private static ReportGeneratorAsync reportGenerator;
+	private static ReportGeneratorAsync reportGenerator = null;
 	/**
 	 * Getter of LOGGER_NAME
 	 */
