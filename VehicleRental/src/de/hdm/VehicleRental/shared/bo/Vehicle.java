@@ -1,6 +1,8 @@
 package de.hdm.VehicleRental.shared.bo;
 
+
 import java.lang.Object;
+
 
 public class Vehicle extends BusinessObject {
 	
@@ -26,18 +28,12 @@ public class Vehicle extends BusinessObject {
 	 * 
 	 */
 	private String vehicleColour;
-	/**
-	 * 
-	 */
-	private int vehicleID;
-	/**
-	 * 
-	 */
+
 
 	/**
 	 * 
 	 */
-	private String vehiclePerformance;
+	private int vehiclePerformance;
 	/**
 	 * 
 	 * @return 
@@ -77,33 +73,20 @@ public class Vehicle extends BusinessObject {
 	public void setVehicleColour(String vehicleColour) { 
 		 this.vehicleColour = vehicleColour; 
 	}
-	/**
-	 * 
-	 * @return 
-	 */
-	public int getVehicleID() {
-	 	 return vehicleID; 
-	}
-	/**
-	 * 
-	 * @param vehicleID 
-	 */
-	public void setVehicleID(int vehicleID) { 
-		 this.vehicleID = vehicleID; 
-	}
+
 
 	/**
 	 * 
 	 * @return 
 	 */
-	public String getVehiclePerformance() {
+	public int getVehiclePerformance() {
 	 	 return vehiclePerformance; 
 	}
 	/**
 	 * Setter of vehiclePerformance
 	 */
-	public void setVehiclePerformance(String vehiclePerformance) { 
-		 this.vehiclePerformance = vehiclePerformance; 
+	public void setVehiclePerformance(int VehiclePerformance) { 
+		 this.vehiclePerformance = VehiclePerformance; 
 	}
 	/**
 	 * 
