@@ -1,33 +1,25 @@
 package de.hdm.VehicleRental.server.db;
 
-import java.util.Vector;
 
+import java.util.Vector;
 import de.hdm.VehicleRental.shared.bo.Profile;
 import de.hdm.VehicleRental.server.db.DBConnection;
-
 import java.sql.*;
-//import de.hdm.VehicleRental.server.db.Profile;
 
-//import java.sql.*;
-
-//import de.hdm.VehicleRental.shared.bo.*;
 
 public class ProfileMapper {
 
 	/**
 	 * 
-	 * Die Klasse AccountMapper wird nur einmal instantiiert. Man spricht
-	 * hierbei von einem sogenannten <b>Singleton</b>.
-	 * <p>
-	 * Diese Variable ist durch den Bezeichner <code>static</code> nur einmal
-	 * fÃ¼r sÃ¤mtliche eventuellen Instanzen dieser Klasse vorhanden. Sie
-	 * speichert die einzige Instanz dieser Klasse.
-	 * 
-	 * @see accountMapper()
-	 * 
-	 * 
-	 *      /** Die MapperKlassen werden nur einmal instantiiert. Es wird die
-	 *      einzige Instanz der Klasse gespeichert
+	   * Die Klasse VehicleMapper wird nur einmal instantiiert. Man spricht hierbei
+	   * von einem sogenannten <b>Singleton</b>.
+	   * <p>
+	   * Diese Variable ist durch den Bezeichner <code>static</code> nur einmal fÃ¼r
+	   * sÃ¤mtliche eventuellen Instanzen dieser Klasse vorhanden. Sie speichert die
+	   * einzige Instanz dieser Klasse.
+	   * 
+	   * @see accountMapper()
+	   
 	 */
 	private static ProfileMapper profileMapper = null;
 
@@ -38,12 +30,13 @@ public class ProfileMapper {
 	protected ProfileMapper() {
 	}
 
+	
 	/**
 	 * Hier wird die Instanz erstellt, sofern keine vorhanden ist.
 	 * 
 	 * @return freeTextMapper
 	 */
-	public static ProfileMapper ProfileMapper() {
+	public static ProfileMapper profileMapper() {
 		if (profileMapper == null) {
 			profileMapper = new ProfileMapper();
 		}
@@ -52,7 +45,7 @@ public class ProfileMapper {
 
 	/**
 	 * 
-	 * EinfÃ¼gen eines <code>Account</code>-Objekts in die Datenbank. Dabei wird
+	 * EinfÃ¼gen eines <code>Profile</code>-Objekts in die Datenbank. Dabei wird
 	 * auch der PrimÃ¤rschlÃ¼ssel des Ã¼bergebenen Objekts geprÃ¼ft und ggf.
 	 * berichtigt.
 	 * 
@@ -61,7 +54,7 @@ public class ProfileMapper {
 	 * @return das bereits Ã¼bergebene Objekt, jedoch mit ggf. korrigierter
 	 *         <code>id</code>.
 	 * 
-	 * @param profilID
+	 * @param profileID
 	 * @return
 	 */
 	public Profile insert(Profile p) {
@@ -88,12 +81,14 @@ public class ProfileMapper {
 
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
 				stmt.executeUpdate("INSERT INTO profil (ProfilID, Name, FührerscheinID, Email, Guthaben) " + "VALUES ("
-						+ p.getId() + ",'" + p.getName() + "', " + p.getDriversLicence() + ", '" + p.getEmail() + "', "
+						+ p.getId() + ",'" 
+						+ p.getName() + "', " 
+						+ p.getDriversLicence() + ", '" 
+						+ p.getEmail() + "', "
 						+ p.getBalance() + ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-
 		}
 
 		/*
@@ -111,7 +106,7 @@ public class ProfileMapper {
 
 	/**
 	 * 
-	 * LÃ¶schen der Daten eines <code>Account</code>-Objekts aus der Datenbank.
+	 * LÃ¶schen der Daten eines <code>Profile</code>-Objekts aus der Datenbank.
 	 * 
 	 * @param profileID
 	 *            das aus der DB zu lÃ¶schende "Objekt"
@@ -132,9 +127,6 @@ public class ProfileMapper {
 			}	
 		}
 	
-
-	
-
 	
 	/**
 	 * 
@@ -148,13 +140,37 @@ public class ProfileMapper {
 	 * @return
 	 */
 	public Profile update(Profile profileID) {
-		// TODO Auto-generated method
-		return null;
+	
+		Connection con = DBConnection.connection();
+		try {
+			Statement stmt = con.createStatement();
+	
+			/*
+			 * Informationen werden in die Datenbank geschrieben Als erstes
+			 * werden die Profilattribute gesetzt 
+			 */
+			stmt.executeUpdate("UPDATE profil SET " + 
+			 "ProfilID= " + 		 	profileID.getId() + ", " + 
+			 "Name= '" + 			 	profileID.getName() + "', " + 
+			 "FührerscheinID= " + 		profileID.getDriversLicence() + ", " + 
+			 "Email= '" + 		 		profileID.getEmail() + "', " + 
+			 " Guthaben= " +      		profileID.getBalance() + 
+			 " WHERE ProfilID = " +     profileID.getId());
+			
+			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		/* RÃ¼ckgabe des Ergebnis */
+		return profileID;
 	}
 
+	
+	
 	/**
 	 * 
-	 * Suchen eines Kontos mit vorgegebener Kontonummer. Da diese eindeutig ist,
+	 * Suchen eines Profiles mit vorgegebener ID. Da diese eindeutig ist,
 	 * wird genau ein Objekt zurï¿½ckgegeben.
 	 * 
 	 * @param id
@@ -184,38 +200,20 @@ public class ProfileMapper {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Profile a = new Profile();
 				a.setId(rs.getInt("ProfilID"));
-				a.setAdress(rs.getString("Name"));
+				a.setName(rs.getString("Name"));
+				a.setDriversLicence(rs.getInt("FührerscheinID"));
+				a.setEmail(rs.getString("Email"));
+				a.setBalance(rs.getDouble("Guthaben"));
 				return a;
 			}
+			
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 			return null;
 		}
-
-		return null;
-
-	}
-
-	/**
-	 * 
-	 * Auslesen aller Konten eines durch FremdschlÃ¼ssel (Kundennr.) gegebenen
-	 * Kunden.
-	 * 
-	 * @see findByOwner(Customer owner)
-	 * @param ownerID
-	 *            SchlÃ¼ssel des zugehÃ¶rigen Kunden.
-	 * @return Ein Vektor mit Account-Objekten, die sÃ¤mtliche Konten des
-	 *         betreffenden Kunden reprÃ¤sentieren. Bei evtl. Exceptions wird
-	 *         ein partiell gefÃ¼llter oder ggf. auch leerer Vetor
-	 *         zurÃ¼ckgeliefert.
-	 * 
-	 * @param lastName
-	 * @return
-	 */
-	public Profile findByLastName(String lastName) {
-		// TODO Auto-generated method
 		return null;
 	}
+
 
 	/**
 	 * 
@@ -237,17 +235,52 @@ public class ProfileMapper {
 
 	/**
 	 * 
-	 * Auslesen aller Konten.
+	 * Auslesen aller Profile.
 	 * 
-	 * @return Ein Vektor mit Account-Objekten, die sÃ¤mtliche Konten
+	 * @return Ein Vektor mit Profil-Objekten, die sÃ¤mtliche Profile
 	 *         reprÃ¤sentieren. Bei evtl. Exceptions wird ein partiell
 	 *         gefÃ¼llter oder ggf. auch leerer Vetor zurÃ¼ckgeliefert.
 	 * 
 	 * @return
 	 */
-	public Vector findAll() {
-		// TODO Auto-generated method
-		return null;
+		public Vector<Profile> getAllProfiles() {
+			Vector<Profile> result = new Vector<Profile>();
+
+			/* Datenbankverbindung wird geholt */
+			Connection con = DBConnection.connection();
+
+			try {
+				/* Leeres Statement wird angelegt */
+				Statement stmt = con.createStatement();
+
+				
+				ResultSet rs = stmt.executeQuery("SELECT * FROM profil");
+
+				/*
+				 * FÃ¼r jeden Eintrag im Suchergebnis wird nun ein UserProfile-Objekt
+				 * erstellt.
+				 */
+				while (rs.next()) {
+					// Ergebnis-Tupel in Objekt umwandeln
+					Profile p = new Profile();
+					p.setId(rs.getInt("ProfilID"));
+					p.setAdress(rs.getString("Name"));
+					p.setDriversLicence(rs.getInt("FührerscheinID"));
+					p.setEmail(rs.getString("Email"));
+					p.setBalance(rs.getDouble("Guthaben"));
+
+
+					/* HinzufÃ¼gen des neuen Objekts zum Ergebnisvektor */
+					result.addElement(p);
+				}
+
+				/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+
+			/* Ergebnisvektor zurÃ¼ckgeben */
+			return result;
+		}
 	}
 
-}
