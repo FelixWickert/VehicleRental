@@ -75,13 +75,13 @@ public class ProfileMapper {
 				 * a erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				p.setId(rs.getInt("maxid") + 1);
+				p.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
 				stmt.executeUpdate("INSERT INTO profil (ProfilID, LastName, DriversLicense, Email, FirstName) " + "VALUES ("
-						+ p.getId() + ",'" 
+						+ p.getID() + ",'" 
 						+ p.getLastName() + "', " 
 						+ p.getDriversLicence() + ", '" 
 						+ p.getEmail() + "', '"
@@ -120,7 +120,7 @@ public class ProfileMapper {
 			// Leeres SQL-Statement (JDBC) anlegen
 						Statement stmt = con.createStatement();
 			
-			stmt.executeUpdate("DELETE FROM profil " + "WHERE ProfilID= " + profileID.getId());
+			stmt.executeUpdate("DELETE FROM profil " + "WHERE ProfilID= " + profileID.getID());
 			
 		} catch (SQLException e2) {
 			e2.printStackTrace();	
@@ -155,7 +155,7 @@ public class ProfileMapper {
 			 "DriversLicense= " + 		profileID.getDriversLicence() + ", " + 
 			 "Email= '" + 		 		profileID.getEmail() + "', " + 
 			 " FirstName= '" +      		profileID.getFirstName() + "', " +
-			 " WHERE ProfilID = " +     profileID.getId());
+			 " WHERE ProfilID = " +     profileID.getID());
 			
 //			UPDATE profil SET LastName= 'letzterName', DriversLicense= 1234, Email= 'email',  FirstName= 'ersterName' WHERE ProfilID = 9;
 			
@@ -202,7 +202,7 @@ public class ProfileMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Profile a = new Profile();
-				a.setId(rs.getInt("ProfilID"));
+				a.setID(rs.getInt("ProfilID"));
 				a.setLastName(rs.getString("LastName"));
 				a.setDriversLicence(rs.getInt("DriversLicense"));
 				a.setEmail(rs.getString("Email"));
@@ -266,7 +266,7 @@ public class ProfileMapper {
 				while (rs.next()) {
 					// Ergebnis-Tupel in Objekt umwandeln
 					Profile p = new Profile();
-					p.setId(rs.getInt("ProfilID"));
+					p.setID(rs.getInt("ProfilID"));
 					p.setLastName(rs.getString("LastName"));
 					p.setDriversLicence(rs.getInt("DriversLicense"));
 					p.setEmail(rs.getString("Email"));
