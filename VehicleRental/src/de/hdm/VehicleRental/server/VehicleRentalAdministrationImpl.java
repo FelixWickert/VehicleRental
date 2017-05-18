@@ -126,66 +126,7 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 	/**
 	 * Getter of vehicleMapper
 	 */
-	public VehicleMapper getVehicleMapper() {
-	 	 return vehicleMapper; 
-	}
-	/**
-	 * Setter of vehicleMapper
-	 */
-	public void setVehicleMapper(VehicleMapper vehicleMapper) { 
-		 this.vehicleMapper = vehicleMapper; 
-	}
-	/**
-	 * Getter of memoryListMapper
-	 */
-	public MemoryListMapper getMemoryListMapper() {
-	 	 return memoryListMapper; 
-	}
-	/**
-	 * Setter of memoryListMapper
-	 */
-	public void setMemoryListMapper(MemoryListMapper memoryListMapper) { 
-		 this.memoryListMapper = memoryListMapper; 
-	}
-	/**
-	 * Getter of vehicleRental
-	 */
-	public VehicleRental getVehicleRental() {
-	 	 return vehicleRental; 
-	}
-	/**
-	 * 
-	   * Setzen der Bank für die diese Bankverwaltung tätig ist.
-	   
-	 * @param vehicleRentalID 
-	 */
-	public void setVehicleRental(VehicleRental vehicleRental) { 
-		 this.vehicleRental = vehicleRental; 
-	}
-	/**
-	 * Getter of profileMapper
-	 */
-	public ProfileMapper getProfileMapper() {
-	 	 return profileMapper; 
-	}
-	/**
-	 * Setter of profileMapper
-	 */
-	public void setProfileMapper(ProfileMapper profileMapper) { 
-		 this.profileMapper = profileMapper; 
-	}
-	/**
-	 * Getter of reservationMapper
-	 */
-	public ReservationMapper getReservationMapper() {
-	 	 return reservationMapper; 
-	}
-	/**
-	 * Setter of reservationMapper
-	 */
-	public void setReservationMapper(ReservationMapper reservationMapper) { 
-		 this.reservationMapper = reservationMapper; 
-	}
+	
 	/**
 	 * 
 	 * @param profileID 
