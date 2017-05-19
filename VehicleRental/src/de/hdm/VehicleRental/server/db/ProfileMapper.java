@@ -154,7 +154,7 @@ public class ProfileMapper {
 			 "LastName= '" + 			profileID.getLastName() + "', " + 
 			 "DriversLicense= " + 		profileID.getDriversLicence() + ", " + 
 			 "Email= '" + 		 		profileID.getEmail() + "', " + 
-			 " FirstName= '" +      		profileID.getFirstName() + "', " +
+			 " FirstName= '" +      		profileID.getFirstName() + "' " +
 			 " WHERE ProfilID = " +     profileID.getID());
 			
 //			UPDATE profil SET LastName= 'letzterName', DriversLicense= 1234, Email= 'email',  FirstName= 'ersterName' WHERE ProfilID = 9;
