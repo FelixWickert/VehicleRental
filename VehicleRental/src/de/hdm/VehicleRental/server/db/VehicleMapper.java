@@ -23,6 +23,8 @@ public class VehicleMapper {
 	 */
 	private static VehicleMapper vehicleMapper = null;
 	
+	
+	
 	/**
 	 * Der Null-Konstruktor mit dem Accessmodifier protected. Dadurch kÃ¶nnen
 	 * nur die Klassen in dem selben Package auf diese Methode zugreifen.
@@ -36,7 +38,7 @@ public class VehicleMapper {
 	 * 
 	 * @return freeTextMapper
 	 */
-	public static VehicleMapper VehicleMapper() {
+	public static VehicleMapper vehicleMapper() {
 		if (vehicleMapper == null) {
 			vehicleMapper = new VehicleMapper();
 		}
@@ -147,13 +149,13 @@ public class VehicleMapper {
 			 * Informationen werden in die Datenbank geschrieben Als erstes
 			 * werden die Profilattribute gesetzt 
 			 */
-			stmt.executeUpdate("UPDATE profil SET " + 
+			stmt.executeUpdate("UPDATE vehicle SET " + 
 			 "VehicleID= " + 		 		vehicleID.getID() + ", " + 
 			 "Category= '" + 			 	vehicleID.getCategory() + "', " + 
 			 "Performance= '" + 			vehicleID.getPerformance() + "', " + 
 			 "Model= '" + 		 			vehicleID.getModel() + "', " + 
-			 "Colour= '" + 		 			vehicleID.getColour() + "', " + 
-			 " WHERE AutoID = " +  			vehicleID.getID());
+			 "Colour= '" + 		 			vehicleID.getColour() + "' " + 
+			 " WHERE VehicleID = " +  			vehicleID.getID());
 	 
 			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
 		} catch (SQLException e) {
