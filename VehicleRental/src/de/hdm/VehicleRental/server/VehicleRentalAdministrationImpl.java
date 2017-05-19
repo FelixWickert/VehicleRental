@@ -1,15 +1,12 @@
 package de.hdm.VehicleRental.server;
 
 import java.util.Vector;
-import datatype.Vehicle;
-import de.hdm.VehicleRental.server.MemoryListMapper;
-import de.hdm.VehicleRental.server.Profile;
-import de.hdm.VehicleRental.server.ProfileMapper;
-import de.hdm.VehicleRental.server.Reservation;
-import de.hdm.VehicleRental.server.ReservationMapper;
-import de.hdm.VehicleRental.server.VehicleMapper;
-import de.hdm.VehicleRental.server.VehicleRental;
-import de.hdm.VehicleRental.server.db.MemoryList;
+
+
+import de.hdm.VehicleRental.server.db.VehicleMapper;
+import de.hdm.VehicleRental.server.db.ProfileMapper;
+import de.hdm.VehicleRental.server.db.ReservationMapper;
+
 
 /**
  * 
@@ -123,6 +120,30 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 	 * 
 	 */
 	private ReservationMapper reservationMapper;
+	
+	/**
+	 * 
+	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor
+	   * {@link #ReportGeneratorImpl()}. Diese Methode muss für jede Instanz von
+	   * <code>BankVerwaltungImpl</code> aufgerufen werden.
+	   * 
+	   * @see #ReportGeneratorImpl()
+	   
+	 */
+	/**
+	 * Diese Methode initialisiert die Applikationslogik und startet dabei die
+	 * Mapper
+	 */
+	public void init() throws IllegalArgumentException {
+		
+		this.vehicleMapper = VehicleMapper.vehicleMapper();
+		this.profileMapper = ProfileMapper.profileMapper();
+		this.reservationMapper = ReservationMapper.reservationMapper();
+	}
+	
+	
+	
+	
 	/**
 	 * Getter of vehicleMapper
 	 */
@@ -146,18 +167,7 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 		// TODO Auto-generated method
 		return null;
 	 }
-	/**
-	 * 
-	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor
-	   * {@link #ReportGeneratorImpl()}. Diese Methode muss für jede Instanz von
-	   * <code>BankVerwaltungImpl</code> aufgerufen werden.
-	   * 
-	   * @see #ReportGeneratorImpl()
-	   
-	 */
-	public void init() { 
-		// TODO Auto-generated method
-	 }
+
 	/**
 	 * 
 	   * Löschen der übergebenen Buchung. Beachten Sie bitte auch die Anmerkungen zu
