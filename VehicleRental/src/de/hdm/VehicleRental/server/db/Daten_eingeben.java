@@ -2,9 +2,11 @@ package de.hdm.VehicleRental.server.db;
 
 import java.util.Scanner;
 
+import de.hdm.VehicleRental.shared.bo.Vehicle;
+
 public class  Daten_eingeben { 
 	
-	public static void main {
+	public static void main (){
 		
 			System.out.println("Geben Sie eine Automarke ein:");
 			Scanner scanner1 = new Scanner(System.in);
@@ -18,7 +20,7 @@ public class  Daten_eingeben {
 			Scanner scanner3 = new Scanner (System.in);
 			String leistung = scanner3.nextLine();
 			
-			Vehicle vehicle = new Vehicle;
+			Vehicle vehicle = new Vehicle();
 			vehicle.addMarke = marke;
 			vehicle.addTyp = typ;
 			vehicle.addLeistung = leistung;

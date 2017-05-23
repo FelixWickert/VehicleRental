@@ -34,6 +34,14 @@ public class Vehicle extends BusinessObject {
 	 * 
 	 */
 	private int vehiclePerformance;
+
+/**
+ * gehört zur Test-main-Methode wegen Eingabe in die DB testen
+ */
+	public String addMarke;
+	public String addTyp;
+	public String addLeistung;
+	
 	/**
 	 * 
 	 * @return 
