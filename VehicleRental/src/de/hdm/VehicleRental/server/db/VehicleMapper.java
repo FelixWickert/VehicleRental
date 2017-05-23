@@ -179,7 +179,7 @@ public class VehicleMapper {
 	 * @param vehicleID
 	 * @return
 	 */
-	public Vehicle findByID(int vehicleID) {
+	public static Vehicle findByID(int vehicleID) {
 		// DB-Verbindung holen
 		Connection con = DBConnection.connection();
 

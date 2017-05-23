@@ -24,12 +24,17 @@ public class  Daten_eingeben {
 			Scanner scanner3 = new Scanner (System.in);
 			String leistung = scanner3.nextLine();
 			
-			Vehicle vehicle = new Vehicle();
-			vehicle.addMarke = marke;
-			vehicle.addTyp = typ;
-			vehicle.addLeistung = leistung;
+			System.out.println("Geben Sie eine Kategorie für das Fahrzeug an:");
+			Scanner scanner4 = new Scanner (System.in);
+			String kategorie = scanner4.nextLine();
 			
-			System.out.println(vehicle);
+			Vehicle vehicle = new Vehicle();
+			vehicle.setBrand(marke);
+			vehicle.setModel(typ);
+			vehicle.setPerformance(leistung);
+			vehicle.setCategory(kategorie);
+						
+			System.out.println(VehicleMapper.findByID(1));
 		}
 		
 	}
