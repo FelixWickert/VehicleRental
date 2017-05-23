@@ -9,6 +9,7 @@ import java.sql.*;
 
 public class VehicleMapper {
 
+	
 	/**
 	 * 
 	   * Die Klasse VehicleMapper wird nur einmal instantiiert. Man spricht hierbei
@@ -49,8 +50,8 @@ public class VehicleMapper {
 	 * auch der PrimÃ¤rschlÃ¼ssel des Ã¼bergebenen Objekts geprÃ¼ft und ggf.
 	 * berichtigt.
 	 * 
-	 * @param a
-	 *            das zu speichernde Objekt
+	 * @param a das zu speichernde Objekt
+	 *            
 	 * @return das bereits Ã¼bergebene Objekt, jedoch mit ggf. korrigierter
 	 *         <code>id</code>.
 	 * 
@@ -166,8 +167,8 @@ public class VehicleMapper {
 	 * Suchen eines Fahrzeugs mit vorgegebener ID. Da diese eindeutig ist,
 	 * wird genau ein Objekt zurï¿½ckgegeben.
 	 * 
-	 * @param id
-	 *            PrimÃ¤rschlÃ¼sselattribut (->DB)
+	 * @param id PrimÃ¤rschlÃ¼sselattribut (->DB)
+	 *            
 	 * @return Konto-Objekt, das dem Ã¼bergebenen SchlÃ¼ssel entspricht, null
 	 *         bei nicht vorhandenem DB-Tupel.
 	 * 
@@ -251,5 +252,7 @@ public class VehicleMapper {
 		/* Ergebnisvektor zurÃ¼ckgeben */
 		return result;
 	}
+	
+	
 
 }
