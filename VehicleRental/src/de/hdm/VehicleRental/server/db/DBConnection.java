@@ -4,8 +4,11 @@ import java.sql.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Scanner;
 
 import com.google.appengine.api.utils.SystemProperty;
+
+import de.hdm.VehicleRental.shared.bo.Vehicle;
 
 /**
  * Verwalten einer Verbindung zur Datenbank.<p>
@@ -98,7 +101,7 @@ public class DBConnection {
             }
         }
 
-        // Zurückgegeben der Verbindung
+        // Zurï¿½ckgegeben der Verbindung
         return con;
 	}
 	
@@ -110,6 +113,37 @@ public class DBConnection {
 		
 	}
 	
+	
+	/**
+	 * Lass mal hier probieren...
+	 */
+	
+	public static void main (){
+		
+		System.out.println("Geben Sie eine Automarke ein:");
+		Scanner scanner1 = new Scanner(System.in);
+		String marke = scanner1.nextLine();
+		
+		System.out.println("Geben Sie eine Fahrzeugtyp an:");
+		Scanner scanner2 = new Scanner (System.in);
+		String typ = scanner2.nextLine();
+		
+		System.out.println("Geben Sie die Leistung des Fahrzeugs an:");
+		Scanner scanner3 = new Scanner (System.in);
+		String leistung = scanner3.nextLine();
+		
+		System.out.println("Geben Sie eine Kategorie fÃ¼r das Fahrzeug an:");
+		Scanner scanner4 = new Scanner (System.in);
+		String kategorie = scanner4.nextLine();
+		
+		Vehicle vehicle = new Vehicle();
+		vehicle.setBrand(marke);
+		vehicle.setModel(typ);
+		vehicle.setPerformance(leistung);
+		vehicle.setCategory(kategorie);
+					
+		System.out.println(VehicleMapper.findByID(1));
+	}
 	
 	
 }
