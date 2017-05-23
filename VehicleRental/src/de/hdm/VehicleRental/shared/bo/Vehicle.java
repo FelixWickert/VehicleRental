@@ -9,7 +9,7 @@ public class Vehicle extends BusinessObject {
 	/**
 	 * 
 	 */
-	private String vehicleModel;
+	private String Model;
 	
 	public String getBrand() {
 		return Brand;
@@ -23,11 +23,11 @@ public class Vehicle extends BusinessObject {
 	/**
 	 * 
 	 */
-	private String vehicleCategory;
+	private String Category;
 	/**
 	 * 
 	 */
-	private String vehicleColour;
+	private String Colour;
 
 
 	/**
@@ -42,44 +42,45 @@ public class Vehicle extends BusinessObject {
 	public String addTyp;
 	public String addLeistung;
 	
+	private String Performance;
 	/**
 	 * 
 	 * @return 
 	 */
-	public String getVehicleModel() {
-	 	 return vehicleModel; 
+	public String getModel() {
+	 	 return Model; 
 	}
 	/**
-	 * Setter of vehicleModel
+	 * Setter of Model
 	 */
-	public void setVehicleModel(String vehicleModel) { 
-		 this.vehicleModel = vehicleModel; 
+	public void setModel(String Model) { 
+		 this.Model = Model; 
 	}
 	/**
 	 * 
 	 * @return 
 	 */
-	public String getVehicleCategory() {
-	 	 return vehicleCategory; 
+	public String getCategory() {
+	 	 return Category; 
 	}
 	/**
 	 * Setter of vehicleCategory
 	 */
-	public void setVehicleCategory(String vehicleCategory) { 
-		 this.vehicleCategory = vehicleCategory; 
+	public void setCategory(String Category) { 
+		 this.Category = Category; 
 	}
 	/**
 	 * 
 	 * @return 
 	 */
-	public String getVehicleColour() {
-	 	 return vehicleColour; 
+	public String getColour() {
+	 	 return Colour; 
 	}
 	/**
-	 * Setter of vehicleColour
+	 * Setter of Colour
 	 */
-	public void setVehicleColour(String vehicleColour) { 
-		 this.vehicleColour = vehicleColour; 
+	public void setColour(String Colour) { 
+		 this.Colour = Colour; 
 	}
 
 
@@ -87,14 +88,14 @@ public class Vehicle extends BusinessObject {
 	 * 
 	 * @return 
 	 */
-	public int getVehiclePerformance() {
-	 	 return vehiclePerformance; 
+	public String getPerformance() {
+	 	 return Performance; 
 	}
 	/**
 	 * Setter of vehiclePerformance
 	 */
-	public void setVehiclePerformance(int VehiclePerformance) { 
-		 this.vehiclePerformance = VehiclePerformance; 
+	public void setPerformance(String Performance) { 
+		 this.Performance = Performance; 
 	}
 	/**
 	 * 
@@ -112,7 +113,7 @@ public class Vehicle extends BusinessObject {
 	 * @param vehicleID 
 	 * @param vehicleColour 
 	 */
-	public void setVehicleModel(int vehicleID, String vehicleColour) { 
+	public void setModel(int vehicleID, String vehicleColour) { 
 		// TODO Auto-generated method
 	 }
 	/**
@@ -120,7 +121,7 @@ public class Vehicle extends BusinessObject {
 	 * @param vehicleID 
 	 * @param vehicleCategory 
 	 */
-	public void setVehicleCategory(int vehicleID, String vehicleCategory) { 
+	public void setCategory(int vehicleID, String vehicleCategory) { 
 		// TODO Auto-generated method
 	 }
 	/**
@@ -128,7 +129,7 @@ public class Vehicle extends BusinessObject {
 	 * @param vehicleColour 
 	 * @param VehicleID 
 	 */
-	public void setVehicleColour(String vehicleColour, int VehicleID) { 
+	public void setColour(String vehicleColour, int VehicleID) { 
 		// TODO Auto-generated method
 	 }
 	/**
@@ -136,7 +137,7 @@ public class Vehicle extends BusinessObject {
 	 * @param vehiclePerformance 
 	 * @param vehicleID 
 	 */
-	public void setVehiclePerformance(String vehiclePerformance, int vehicleID) { 
+	public void setPerformance(String vehiclePerformance, int vehicleID) { 
 		// TODO Auto-generated method
 	 }
 

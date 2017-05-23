@@ -16,7 +16,32 @@ private Vector<Vehicle> favoritenListe = new Vector<>();
 	 * Der Nachname des Kunden.
 	 * 
 	 */
-	private String name;
+	private String LastName;
+	
+	/**
+	 * 
+	 * Der Vorname des Kunden.
+	 * 
+	 */
+	private String FirstName;
+	
+	
+	public String getLastName() {
+		return LastName;
+	}
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+
+	public String getFirstName() {
+		return FirstName;
+	}
+
+	public void setFirstName(String firstName) {
+		FirstName = firstName;
+	}
+
 	/**
 	 * 
 	 */
@@ -58,26 +83,6 @@ private double balance;
 	 */
 	public void setDriversLicence(int driversLicence) {
 		this.driversLicence = driversLicence;
-	}
-
-	/**
-	 * 
-	 * Auslesen des Nachnamens.
-	 * 
-	 * @return
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * 
-	 * Setzen des Nachnamens.
-	 * 
-	 * @param name
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**

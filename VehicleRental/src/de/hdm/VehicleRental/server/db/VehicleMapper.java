@@ -24,6 +24,8 @@ public class VehicleMapper {
 	 */
 	private static VehicleMapper vehicleMapper = null;
 	
+	
+	
 	/**
 	 * Der Null-Konstruktor mit dem Accessmodifier protected. Dadurch kÃ¶nnen
 	 * nur die Klassen in dem selben Package auf diese Methode zugreifen.
@@ -37,7 +39,7 @@ public class VehicleMapper {
 	 * 
 	 * @return freeTextMapper
 	 */
-	public static VehicleMapper VehicleMapper() {
+	public static VehicleMapper vehicleMapper() {
 		if (vehicleMapper == null) {
 			vehicleMapper = new VehicleMapper();
 		}
@@ -67,7 +69,7 @@ public class VehicleMapper {
 		 * Zunächst schauen wir nach, welches der momentan höchste
 		 * Primärschlüsselwert ist.
 		 */
-		ResultSet rs = stmt.executeQuery("SELECT MAX(AutoID) AS maxid " + "FROM auto");
+		ResultSet rs = stmt.executeQuery("SELECT MAX(VehicleID) AS maxid " + "FROM vehicle");
 		
 		// Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
 		if (rs.next()) {
@@ -75,15 +77,16 @@ public class VehicleMapper {
 			 * a erhält den bisher maximalen, nun um 1 inkrementierten
 			 * Primärschlüssel.
 			 */
-			v.setId(rs.getInt("maxid") + 1);
+			v.setID(rs.getInt("maxid") + 1);
 			stmt = con.createStatement();
 
 			// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-			stmt.executeUpdate("INSERT INTO auto (Marke, AutoID, FZGTyp, Leistung) " + "VALUES ('"
-					+ v.getBrand() + "'," 
-					+ v.getId() + ", '" 
-					+ v.getVehicleModel() + "', " 
-					+ v.getVehiclePerformance() + "" + ")");
+			stmt.executeUpdate("INSERT INTO vehicle (VehicleID, Category, Performance, Model, Colour) " + "VALUES ("
+					+ v.getID() + ", '" 
+					+ v.getCategory() + "' , '" 
+					+ v.getPerformance() + "', '" 
+					+ v.getModel() + "', '" 
+					+ v.getColour() + "'" + ")");
 		}
 	} catch (SQLException e2) {
 		e2.printStackTrace();
@@ -119,7 +122,7 @@ public class VehicleMapper {
 			// Leeres SQL-Statement (JDBC) anlegen
 						Statement stmt = con.createStatement();
 			
-			stmt.executeUpdate("DELETE FROM auto " + "WHERE AutoID= " + vehicleID.getId());
+			stmt.executeUpdate("DELETE FROM vehicle " + "WHERE VehicleID= " + vehicleID.getID());
 
 		} catch (SQLException e2) {
 			e2.printStackTrace();	
@@ -147,12 +150,13 @@ public class VehicleMapper {
 			 * Informationen werden in die Datenbank geschrieben Als erstes
 			 * werden die Profilattribute gesetzt 
 			 */
-			stmt.executeUpdate("UPDATE profil SET " + 
-			 "AutoID= " + 		 		vehicleID.getId() + ", " + 
-			 "Marke= '" + 			 	vehicleID.getBrand() + "', " + 
-			 "FZGTyp= '" + 				vehicleID.getVehicleCategory() + "', " + 
-			 "Leistung= '" + 		 	vehicleID.getVehiclePerformance() + "', " + 
-			 " WHERE AutoID = " +  		vehicleID.getId());
+			stmt.executeUpdate("UPDATE vehicle SET " + 
+			 "VehicleID= " + 		 		vehicleID.getID() + ", " + 
+			 "Category= '" + 			 	vehicleID.getCategory() + "', " + 
+			 "Performance= '" + 			vehicleID.getPerformance() + "', " + 
+			 "Model= '" + 		 			vehicleID.getModel() + "', " + 
+			 "Colour= '" + 		 			vehicleID.getColour() + "' " + 
+			 " WHERE VehicleID = " +  			vehicleID.getID());
 	 
 			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
 		} catch (SQLException e) {
@@ -184,7 +188,7 @@ public class VehicleMapper {
 			Statement stmt = con.createStatement();
 
 			// Statement ausfÃ¼llen und als Query an die DB schicken
-			ResultSet rs = stmt.executeQuery("SELECT * FROM `auto` WHERE autoID = " + vehicleID);
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `vehicle` WHERE VehicleID = " + vehicleID);
 
 			/*
 			 * Da id PrimÃ¤rschlÃ¼ssel ist, kann max. nur ein Tupel
@@ -193,10 +197,11 @@ public class VehicleMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Vehicle a = new Vehicle();
-				a.setId(rs.getInt("ID"));
-				a.setBrand(rs.getString("Marke"));
-				a.setVehicleCategory(rs.getString("FZGTyp"));
-				a.setVehiclePerformance(rs.getInt("Leistung"));
+				a.setID(rs.getInt("VehicleID"));
+				a.setCategory(rs.getString("Category"));
+				a.setPerformance(rs.getString("Performance"));
+				a.setModel(rs.getString("Model"));
+				a.setColour(rs.getString("Colour"));
 				return a;
 			}
 		} catch (SQLException e2) {
@@ -228,7 +233,7 @@ public class VehicleMapper {
 			Statement stmt = con.createStatement();
 
 			
-			ResultSet rs = stmt.executeQuery("SELECT * FROM auto");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM vehicle");
 
 			/*
 			 * FÃ¼r jeden Eintrag im Suchergebnis wird nun ein UserProfile-Objekt
@@ -237,10 +242,11 @@ public class VehicleMapper {
 			while (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Vehicle p = new Vehicle();
-				p.setId(rs.getInt("AutoID"));
-				p.setBrand(rs.getString("Marke"));
-				p.setVehicleCategory(rs.getString("FZGTyp"));
-				p.setVehiclePerformance(rs.getInt("Leistung"));
+				p.setID(rs.getInt("VehicleID"));
+				p.setCategory(rs.getString("Category"));
+				p.setPerformance(rs.getString("Performance"));
+				p.setModel(rs.getString("Model"));
+				p.setColour(rs.getString("Colour"));
 			
 				/* HinzufÃ¼gen des neuen Objekts zum Ergebnisvektor */
 				result.addElement(p);
