@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import de.hdm.VehicleRental.shared.bo.Vehicle;
 
+import java.util.Scanner;
+
+import testing.Vehicle;
+
 public class  Daten_eingeben { 
 	
 	public static void main (){
