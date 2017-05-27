@@ -23,7 +23,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>VehicleRental.html</welcome-file>
+    <welcome-file>/VehicleRental/VehicleRental.html</welcome-file>
   </welcome-file-list>
 
   <servlet>
