@@ -1,6 +1,6 @@
 package de.hdm.VehicleRental.shared.bo;
 
-import datatype.Long;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -22,7 +22,7 @@ public class Reservation extends BusinessObject {
 	/**
 	 * 
 	 */
-	private static final Long serialVersionUID;
+	private static  Long serialVersionUID;
 	/**
 	 * 
 	   * Der Betrag der Buchung. Dieser Betrag kann als Geldwert interpretiert
@@ -34,7 +34,7 @@ public class Reservation extends BusinessObject {
 	/**
 	 * 
 	 */
-	private EDate reservationDate;
+	private Date reservationDate;
 	/**
 	 * 
 	 */
@@ -80,7 +80,7 @@ public class Reservation extends BusinessObject {
 	   
 	 * @return 
 	 */
-	public EDate getReservationDate() {
+	public Date getReservationDate() {
 	 	 return reservationDate; 
 	}
 	/**
@@ -90,7 +90,7 @@ public class Reservation extends BusinessObject {
 	   
 	 * @param reservationDate 
 	 */
-	public void setReservationDate(EDate reservationDate) { 
+	public void setReservationDate(Date reservationDate) { 
 		 this.reservationDate = reservationDate; 
 	}
 	/**

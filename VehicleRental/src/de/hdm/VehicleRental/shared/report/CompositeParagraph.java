@@ -1,8 +1,8 @@
 package de.hdm.VehicleRental.shared.report;
 
+import java.io.Serializable;
 import java.util.Vector;
-import datatype.Long;
-import datatype.Integer;
+
 
 public class CompositeParagraph extends Paragraph implements Serializable {
 
@@ -17,7 +17,7 @@ public class CompositeParagraph extends Paragraph implements Serializable {
 	   * 
 	   
 	 */
-	private static final Long serialVersionUID;
+	private static final Long serialVersionUID = 1L;
 	/**
 	 * 
 	   * Auslesen sämtlicher Unterabschnitte.
@@ -35,18 +35,7 @@ public class CompositeParagraph extends Paragraph implements Serializable {
 	public void setSubParagraphs(Vector subParagraphs) { 
 		 this.subParagraphs = subParagraphs; 
 	}
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 	   * Einen Unterabschnitt entfernen.

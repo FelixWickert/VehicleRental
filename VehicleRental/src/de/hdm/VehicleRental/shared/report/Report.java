@@ -1,6 +1,7 @@
 package de.hdm.VehicleRental.shared.report;
 
-import datatype.Long;
+
+import java.io.Serializable;
 import java.util.Date;
 
 public abstract class Report implements Serializable {
@@ -22,7 +23,7 @@ public abstract class Report implements Serializable {
 	   * 
 	   
 	 */
-	private static final Long serialVersionUID;
+	private static final Long serialVersionUID = 1L;
 	/**
 	 * 
 	   * Datum der Erstellung des Berichts.
@@ -81,18 +82,7 @@ public abstract class Report implements Serializable {
 	public void setHeaderData(Paragraph headerData) { 
 		 this.headerData = headerData; 
 	}
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 	   * Auslesen des Erstellungsdatums.

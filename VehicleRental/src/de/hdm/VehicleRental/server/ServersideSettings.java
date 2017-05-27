@@ -27,11 +27,11 @@ public class ServersideSettings extends CommonSettings {
 	/**
 	 * 
 	 */
-	private static final String LOGGER_NAME;
+	private static String LOGGER_NAME;
 	/**
 	 * 
 	 */
-	private static final Logger log;
+	private static Logger log;
 	/**
 	 * Getter of LOGGER_NAME
 	 */

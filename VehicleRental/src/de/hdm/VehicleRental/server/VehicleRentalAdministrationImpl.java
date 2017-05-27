@@ -1,15 +1,16 @@
 package de.hdm.VehicleRental.server;
 
+import java.util.Date;
 import java.util.Vector;
-import datatype.Vehicle;
-import de.hdm.VehicleRental.server.MemoryListMapper;
-import de.hdm.VehicleRental.server.Profile;
-import de.hdm.VehicleRental.server.ProfileMapper;
-import de.hdm.VehicleRental.server.Reservation;
-import de.hdm.VehicleRental.server.ReservationMapper;
-import de.hdm.VehicleRental.server.VehicleMapper;
-import de.hdm.VehicleRental.server.VehicleRental;
-import de.hdm.VehicleRental.server.db.MemoryList;
+import de.hdm.VehicleRental.shared.bo.Vehicle;
+import de.hdm.VehicleRental.server.db.MemoryListMapper;
+import de.hdm.VehicleRental.shared.bo.Profile;
+import de.hdm.VehicleRental.server.db.ProfileMapper;
+import de.hdm.VehicleRental.shared.bo.Reservation;
+import de.hdm.VehicleRental.server.db.ReservationMapper;
+import de.hdm.VehicleRental.server.db.VehicleMapper;
+import de.hdm.VehicleRental.shared.bo.VehicleRental;
+import de.hdm.VehicleRental.shared.bo.MemoryList;
 
 /**
  * 
@@ -335,7 +336,7 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 	 * @param profileID 
 	 * @return 
 	 */
-	public Reservation createReservation(int reservationNumber, int vehicleNumber, EDate date, int profileID) { 
+	public Reservation createReservation(int reservationNumber, int vehicleNumber, Date date, int profileID) { 
 		// TODO Auto-generated method
 		return null;
 	 }

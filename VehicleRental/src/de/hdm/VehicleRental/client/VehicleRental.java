@@ -25,7 +25,7 @@ public class VehicleRental implements EntryPoint {
      * Zunächst weisen wir der BankAdministration eine Bank-Instanz zu, die das
      * Kreditinstitut repräsentieren soll, für das diese Applikation arbeitet.
      */
-    VehicleRentalAdministrationAsync bankVerwaltung = ClientsideSettings.getBankVerwaltung();
+    VehicleRentalAdministrationAsync bankVerwaltung = ClientsideSettings.getVehicleRentalVerwaltung();
     VehicleRental bank = new VehicleRental();
     bank.setName("HdM Bank");
     bank.setStreet("Nobelstr. 10");

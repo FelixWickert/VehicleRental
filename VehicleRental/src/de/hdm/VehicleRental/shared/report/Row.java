@@ -1,8 +1,7 @@
 package de.hdm.VehicleRental.shared.report;
 
+import java.io.Serializable;
 import java.util.Vector;
-import datatype.Long;
-import datatype.Integer;
 
 public class Row implements Serializable {
 
@@ -17,7 +16,7 @@ public class Row implements Serializable {
 	   * 
 	   
 	 */
-	private static final Long serialVersionUID;
+	private static final Long serialVersionUID = 1L;
 	/**
 	 * 
 	   * Auslesen sämtlicher Spalten.
@@ -35,18 +34,7 @@ public class Row implements Serializable {
 	public void setColumns(Vector columns) { 
 		 this.columns = columns; 
 	}
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 	   * Auslesen eines einzelnen Spalten-Objekts.

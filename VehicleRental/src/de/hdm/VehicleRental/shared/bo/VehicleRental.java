@@ -1,7 +1,6 @@
 package de.hdm.VehicleRental.shared.bo;
 
-import datatype.Integer;
-import datatype.Long;
+
 
 public class VehicleRental extends BusinessObject {
 
@@ -36,7 +35,7 @@ public class VehicleRental extends BusinessObject {
 	/**
 	 * 
 	 */
-	private static final Long serialVersionUID;
+	private static final Long serialVersionUID = 1L;
 	/**
 	 * 
 	   * Auslesen des Orts.
@@ -119,18 +118,7 @@ public class VehicleRental extends BusinessObject {
 	public void setZip(Integer zip) { 
 		 this.zip = zip; 
 	}
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 	 * @param string 
@@ -138,10 +126,7 @@ public class VehicleRental extends BusinessObject {
 	public void getVersionNumber(String string) { 
 		// TODO Auto-generated method
 	 }
-	public int getZip() { 
-		// TODO Auto-generated method
-		return 0;
-	 }
+
 	/**
 	 * 
 	   * Setzen der Postleitzahl

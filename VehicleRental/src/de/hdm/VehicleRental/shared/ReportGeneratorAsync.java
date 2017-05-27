@@ -2,8 +2,8 @@ package de.hdm.VehicleRental.shared;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import de.hdm.VehicleRental.server.Profile;
-import de.hdm.VehicleRental.server.VehicleRental;
+import de.hdm.VehicleRental.shared.bo.Profile;
+import de.hdm.VehicleRental.shared.bo.VehicleRental;
 
 /**
  * 

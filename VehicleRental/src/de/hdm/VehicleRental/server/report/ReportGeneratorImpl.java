@@ -1,8 +1,9 @@
 package de.hdm.VehicleRental.server.report;
 
-import de.hdm.VehicleRental.server.report.AllProfilesReport;
-import de.hdm.VehicleRental.server.report.Profile;
-import de.hdm.VehicleRental.server.report.VehicleRental;
+import de.hdm.VehicleRental.shared.report.AllProfilesReport;
+import de.hdm.VehicleRental.shared.report.AllVehiclesReport;
+import de.hdm.VehicleRental.shared.bo.Profile;
+import de.hdm.VehicleRental.shared.bo.VehicleRental;
 import de.hdm.VehicleRental.shared.VehicleRentalAdministration;
 import de.hdm.VehicleRental.shared.report.MemoryListOfProfileReport;
 import de.hdm.VehicleRental.shared.report.ReservationOfProfileReport;

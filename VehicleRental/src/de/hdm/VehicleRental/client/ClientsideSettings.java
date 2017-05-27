@@ -2,8 +2,8 @@ package de.hdm.VehicleRental.client;
 
 import java.util.logging.Logger;
 
-import de.hdm.VehicleRental.client.ReportGeneratorAsync;
-import de.hdm.VehicleRental.client.VehicleRentalAdministrationAsync;
+import de.hdm.VehicleRental.shared.ReportGeneratorAsync;
+import de.hdm.VehicleRental.shared.VehicleRentalAdministrationAsync;
 
 public class ClientsideSettings extends CommonSettings {
 
@@ -12,7 +12,7 @@ public class ClientsideSettings extends CommonSettings {
 	   * Name des Client-seitigen Loggers.
 	   
 	 */
-	private static final String LOGGER_NAME = "VehicleRental";
+	private static String LOGGER_NAME = "VehicleRental";
 	/**
 	 * 
 	   * Remote Service Proxy zur Verbindungsaufnahme mit dem Server-seitgen Dienst
@@ -25,7 +25,7 @@ public class ClientsideSettings extends CommonSettings {
 	   * Instanz des Client-seitigen Loggers.
 	   
 	 */
-	private static final Logger log = Logger.getLogger(LOGGER_NAME);
+	private static Logger log = Logger.getLogger(LOGGER_NAME);
 	/**
 	 * 
 	   * Remote Service Proxy zur Verbindungsaufnahme mit dem Server-seitgen Dienst

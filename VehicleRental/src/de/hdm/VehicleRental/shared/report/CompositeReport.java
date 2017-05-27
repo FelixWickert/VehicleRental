@@ -1,8 +1,7 @@
 package de.hdm.VehicleRental.shared.report;
 
-import datatype.Long;
-import de.hdm.VehicleRental.shared.report.Vector;
-import datatype.Integer;
+import java.io.Serializable;
+import java.util.Vector;
 
 public abstract class CompositeReport extends Report implements Serializable {
 
@@ -17,7 +16,7 @@ public abstract class CompositeReport extends Report implements Serializable {
 	   * 
 	   
 	 */
-	private static final Long serialVersionUID;
+	private static final Long serialVersionUID = 1L;
 	/**
 	 * Getter of subReports
 	 */
@@ -30,18 +29,7 @@ public abstract class CompositeReport extends Report implements Serializable {
 	public void setSubReports(Vector subReports) { 
 		 this.subReports = subReports; 
 	}
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 		 * Auslesen der Anzahl von Teil-Reports.

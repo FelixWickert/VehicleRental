@@ -1,6 +1,6 @@
 package de.hdm.VehicleRental.shared.report;
 
-import datatype.Long;
+import java.io.Serializable;
 
 public class Column implements Serializable {
 
@@ -9,7 +9,7 @@ public class Column implements Serializable {
 	   * 
 	   
 	 */
-	private static final Long serialVersionUID;
+	private static final Long serialVersionUID = 1L;
 	/**
 	 * 
 	   * Der Wert eines Spaltenobjekts entspricht dem Zelleneintrag einer Tabelle.
@@ -17,18 +17,7 @@ public class Column implements Serializable {
 	   
 	 */
 	private String value;
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
+
 	/**
 	 * 
 	   * Auslesen des Spaltenwerts.
