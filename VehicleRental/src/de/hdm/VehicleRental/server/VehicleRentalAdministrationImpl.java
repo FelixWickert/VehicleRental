@@ -154,9 +154,6 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 		this.reservationMapper = ReservationMapper.reservationMapper();
 	}
 	
-	
-	
-	
 	/**
 	 * Getter of vehicleMapper
 	 */
