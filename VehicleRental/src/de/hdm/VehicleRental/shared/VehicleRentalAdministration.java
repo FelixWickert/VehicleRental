@@ -1,18 +1,16 @@
 package de.hdm.VehicleRental.shared;
 
-import de.hdm.VehicleRental.server.MemoryListMapper;
-import de.hdm.VehicleRental.server.Profile;
-import de.hdm.VehicleRental.server.ProfileMapper;
-import de.hdm.VehicleRental.server.RemoteServiceServlet;
-import de.hdm.VehicleRental.server.ReservationMapper;
-import de.hdm.VehicleRental.server.VehicleMapper;
-import de.hdm.VehicleRental.server.VehicleRental;
-import de.hdm.VehicleRental.server.db.MemoryList;
 
 import java.util.Vector;
 
-import datatype.Vehicle;
+import de.hdm.VehicleRental.server.db.MemoryListMapper;
+import de.hdm.VehicleRental.server.db.ProfileMapper;
+import de.hdm.VehicleRental.server.db.ReservationMapper;
+import de.hdm.VehicleRental.server.db.VehicleMapper;
+import de.hdm.VehicleRental.shared.bo.MemoryList;
 import de.hdm.VehicleRental.shared.bo.Reservation;
+import de.hdm.VehicleRental.shared.bo.Vehicle;
+import de.hdm.VehicleRental.shared.bo.VehicleRental;
 
 
 //Interface, das von der Verwaltungsklasse VehicalRentalAdministrationImpl implementiert wird
@@ -20,34 +18,15 @@ import de.hdm.VehicleRental.shared.bo.Reservation;
 public interface VehicleRentalAdministration {
 
 	
-	private ReservationMapper reservationMapper;
-	/**
-	 * 
-	   * Referenz auf den DatenbankMapper, der Kundenobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private ProfileMapper profileMapper;
-	/**
-	 * 
-	   * Referenz auf den TransactionMapper, der Buchungsobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private MemoryListMapper memoryListMapper;
-	/**
-	 * 
-	   * Referenz auf das zugehörige Bank-Objekt.
-	   
-	 */
-	private VehicleRental vehicleRental;
-	/**
-	 * 
-	   * Referenz auf den DatenbankMapper, der Kontoobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private VehicleMapper vehicleMapper;
+	ReservationMapper reservationMapper=null;
+
+	 ProfileMapper profileMapper= null;
+
+	 MemoryListMapper memoryListMapper=null;
+
+	 VehicleRental vehicleRental=null;
+
+	 VehicleMapper vehicleMapper=null;
 	/**
 	 * Getter of reservationMapper
 	 */

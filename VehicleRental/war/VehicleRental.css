@@ -2,6 +2,25 @@ body {
     text-align: center;  /* Zentrierung im Internet Explorer */
   }
 
+
+
+.buttona{
+	
+	color:red;
+	font-size:18pt;
+	font-weight:bold;
+	
+    margin-top: 400px;
+    margin-bottom: 400px;
+    margin-right: 400px;
+    margin-left: 400px;
+    
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 150px;
+    padding-left: 80px;
+}
+
 h1 {
   font-size: 2em;
   font-weight: bold;
@@ -93,7 +112,7 @@ div#Trailer {
 }
 
 /**
-	Ab hier: Alte Deklarationen. Können ggf. gelöscht werden.
+	Ab hier: Alte Deklarationen. Kï¿½nnen ggf. gelï¿½scht werden.
 */
 .sendButton {
   display: block;

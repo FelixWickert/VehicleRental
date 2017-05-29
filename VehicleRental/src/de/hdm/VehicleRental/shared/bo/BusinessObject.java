@@ -1,7 +1,6 @@
 package de.hdm.VehicleRental.shared.bo;
 
 import java.io.Serializable;
-import java.lang.Object;
 
 /**
  * 

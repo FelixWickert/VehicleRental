@@ -1,16 +1,15 @@
 package de.hdm.VehicleRental.shared;
 
-import de.hdm.VehicleRental.server.MemoryListMapper;
-import de.hdm.VehicleRental.server.Profile;
-import de.hdm.VehicleRental.server.ProfileMapper;
-import de.hdm.VehicleRental.server.RemoteServiceServlet;
-import de.hdm.VehicleRental.server.Reservation;
-import de.hdm.VehicleRental.server.ReservationMapper;
-import de.hdm.VehicleRental.server.VehicleMapper;
-import de.hdm.VehicleRental.server.VehicleRental;
-import de.hdm.VehicleRental.server.db.MemoryList;
-
 import com.google.gwt.user.client.rpc.AsyncCallback;
+
+import de.hdm.VehicleRental.server.db.MemoryListMapper;
+import de.hdm.VehicleRental.server.db.ProfileMapper;
+import de.hdm.VehicleRental.server.db.ReservationMapper;
+import de.hdm.VehicleRental.server.db.VehicleMapper;
+import de.hdm.VehicleRental.server.report.ReportGeneratorImpl;
+import de.hdm.VehicleRental.shared.bo.MemoryList;
+import de.hdm.VehicleRental.shared.bo.Reservation;
+import de.hdm.VehicleRental.shared.bo.VehicleRental;
 
 /**
  * 

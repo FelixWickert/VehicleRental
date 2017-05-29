@@ -1,8 +1,6 @@
 package de.hdm.VehicleRental.shared;
 
-import de.hdm.VehicleRental.shared.bo.Profile;
-import de.hdm.VehicleRental.shared.report.MemoryListOfProfileReport;
-import de.hdm.VehicleRental.shared.report.ReservationOfProfileReport;
+import com.google.gwt.user.client.rpc.RemoteService;
 
 /**
  * 
@@ -36,7 +34,7 @@ import de.hdm.VehicleRental.shared.report.ReservationOfProfileReport;
  * @author
  */
 public interface ReportGenerator extends RemoteService {
-
+}
 	/**
 	 * 
 	   * Initialisierung des Objekts. Diese Methode ist vor dem Hintergrund von GWT
@@ -47,59 +45,59 @@ public interface ReportGenerator extends RemoteService {
 	   * @throws IllegalArgumentException
 	   
 	 */
-	public void init();
+	//public void init();
 
 	/**
 	 * 
 	 * @return 
 	 */
-	public AllProfilesReport createAllProfilesReport();
-
-	/**
-	 * 
-	   * Erstellen eines <code>AllAccountsOfCustomerReport</code>-Reports. Dieser
-	   * Report-Typ stellt sämtliche Konten eines Kunden dar.
-	   * 
-	   * @param c eine Referenz auf das Kundenobjekt bzgl. dessen der Report
-	   *          erstellt werden soll.
-	   * @return das fertige Reportobjekt
-	   * @throws IllegalArgumentException
-	   * @see AllAccountsOfCustomerReport
-	   
-	 * @param profileID 
-	 * @return 
-	 */
-	public MemoryListOfProfileReport createMemoryListOfProfileReport(Profile profileID);
-
-	/**
-	 * 
-	 * @return 
-	 */
-	public AllVehiclesReport createAllVehiclesReport();
-
-	/**
-	 * 
-	   * Erstellen eines <code>AllAccountsOfAllCustomersReport</code>-Reports.
-	   * Dieser Report-Typ stellt sämtliche Konten aller Kunden dar.
-	   * 
-	   * @return das fertige Reportobjekt
-	   * @throws IllegalArgumentException
-	   * @see AllAccountsOfAllCustomersReport
-	   
-	 * @param profileID 
-	 * @return 
-	 */
-	public ReservationOfProfileReport createReservationOfProfileReport(int profileID);
-
-	/**
-	 * 
-	   * Setzen der zugeordneten Bank.
-	   * 
-	   * @para Bank-Objekt
-	   * @throws IllegalArgumentException
-	   
-	 * @param vehicleRentalID 
-	 */
-	public void setVehicleRental(int vehicleRentalID); 
-
-}
+//	public AllProfilesReport createAllProfilesReport();
+//
+//	/**
+//	 * 
+//	   * Erstellen eines <code>AllAccountsOfCustomerReport</code>-Reports. Dieser
+//	   * Report-Typ stellt sämtliche Konten eines Kunden dar.
+//	   * 
+//	   * @param c eine Referenz auf das Kundenobjekt bzgl. dessen der Report
+//	   *          erstellt werden soll.
+//	   * @return das fertige Reportobjekt
+//	   * @throws IllegalArgumentException
+//	   * @see AllAccountsOfCustomerReport
+//	   
+//	 * @param profileID 
+//	 * @return 
+//	 */
+//	public MemoryListOfProfileReport createMemoryListOfProfileReport(Profile profileID);
+//
+//	/**
+//	 * 
+//	 * @return 
+//	 */
+//	public AllVehiclesReport createAllVehiclesReport();
+//
+//	/**
+//	 * 
+//	   * Erstellen eines <code>AllAccountsOfAllCustomersReport</code>-Reports.
+//	   * Dieser Report-Typ stellt sämtliche Konten aller Kunden dar.
+//	   * 
+//	   * @return das fertige Reportobjekt
+//	   * @throws IllegalArgumentException
+//	   * @see AllAccountsOfAllCustomersReport
+//	   
+//	 * @param profileID 
+//	 * @return 
+//	 */
+//	public ReservationOfProfileReport createReservationOfProfileReport(int profileID);
+//
+//	/**
+//	 * 
+//	   * Setzen der zugeordneten Bank.
+//	   * 
+//	   * @para Bank-Objekt
+//	   * @throws IllegalArgumentException
+//	   
+//	 * @param vehicleRentalID 
+//	 */
+//	public void setVehicleRental(int vehicleRentalID); 
+//
+//}

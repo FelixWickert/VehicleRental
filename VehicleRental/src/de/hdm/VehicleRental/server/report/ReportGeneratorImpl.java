@@ -1,11 +1,6 @@
 package de.hdm.VehicleRental.server.report;
 
-import de.hdm.VehicleRental.server.report.AllProfilesReport;
-import de.hdm.VehicleRental.server.report.Profile;
-import de.hdm.VehicleRental.server.report.VehicleRental;
 import de.hdm.VehicleRental.shared.VehicleRentalAdministration;
-import de.hdm.VehicleRental.shared.report.MemoryListOfProfileReport;
-import de.hdm.VehicleRental.shared.report.ReservationOfProfileReport;
 
 public class ReportGeneratorImpl extends RemoteServiceServlet implements ReportGenerator {
 
@@ -44,77 +39,77 @@ public class ReportGeneratorImpl extends RemoteServiceServlet implements ReportG
 	 */
 	public void setSerialVersionUID(long serialVersionUID) { 
 		 this.serialVersionUID = serialVersionUID; 
-	}
+	}}
 	/**
 	 * 
 	 * @param profileID 
 	 * @return 
 	 */
-	public MemoryListOfProfileReport createMemoryListOfProfileReport(int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @param profileID 
-	 * @return 
-	 */
-	public ReservationOfProfileReport createReservationOfProfileReport(int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	   * Auslesen der zugehörigen BankAdministration (interner Gebrauch).
-	   * 
-	   * @return das BankVerwaltungsobjekt
-	   
-	 * @return 
-	 */
-	public VehicleRentalAdministration getVehicleRentalVerwaltung() { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	   * Setzen des zugehörigen Bank-Objekts.
-	   
-	 * @param vehicleRentalID 
-	 */
-	public void setVehicleRental(VehicleRental vehicleRentalID) { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor.
-	   * 
-	   * @see #ReportGeneratorImpl()
-	   
-	 */
-	public void init() { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	   * Erstellen von <code>AllAccountsOfCustomerReport</code>-Objekten.
-	   * 
-	   * @param c das Kundenobjekt bzgl. dessen der Report erstellt werden soll.
-	   * @return der fertige Report
-	   
-	 * @param profileID 
-	 * @return 
-	 */
-	public AllProfilesReport createAllProfilesReport(Profile profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @return 
-	 */
-	public AllVehiclesReport createAllVehiclesReport() { 
-		// TODO Auto-generated method
-		return null;
-	 } 
-
-}
+//	public MemoryListOfProfileReport createMemoryListOfProfileReport(int profileID) { 
+//		// TODO Auto-generated method
+//		return null;
+//	 }
+//	/**
+//	 * 
+//	 * @param profileID 
+//	 * @return 
+//	 */
+//	public ReservationOfProfileReport createReservationOfProfileReport(int profileID) { 
+//		// TODO Auto-generated method
+//		return null;
+//	 }
+//	/**
+//	 * 
+//	   * Auslesen der zugehörigen BankAdministration (interner Gebrauch).
+//	   * 
+//	   * @return das BankVerwaltungsobjekt
+//	   
+//	 * @return 
+//	 */
+//	public VehicleRentalAdministration getVehicleRentalVerwaltung() { 
+//		// TODO Auto-generated method
+//		return null;
+//	 }
+//	/**
+//	 * 
+//	   * Setzen des zugehörigen Bank-Objekts.
+//	   
+//	 * @param vehicleRentalID 
+//	 */
+//	public void setVehicleRental(VehicleRental vehicleRentalID) { 
+//		// TODO Auto-generated method
+//	 }
+//	/**
+//	 * 
+//	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor.
+//	   * 
+//	   * @see #ReportGeneratorImpl()
+//	   
+//	 */
+//	public void init() { 
+//		// TODO Auto-generated method
+//	 }
+//	/**
+//	 * 
+//	   * Erstellen von <code>AllAccountsOfCustomerReport</code>-Objekten.
+//	   * 
+//	   * @param c das Kundenobjekt bzgl. dessen der Report erstellt werden soll.
+//	   * @return der fertige Report
+//	   
+//	 * @param profileID 
+//	 * @return 
+//	 */
+//	public AllProfilesReport createAllProfilesReport(Profile profileID) { 
+//		// TODO Auto-generated method
+//		return null;
+//	 }
+//	/**
+//	 * 
+//	 * @return 
+//	 */
+//	public AllVehiclesReport createAllVehiclesReport() { 
+//		// TODO Auto-generated method
+//		return null;
+//	 } 
+//
+//}

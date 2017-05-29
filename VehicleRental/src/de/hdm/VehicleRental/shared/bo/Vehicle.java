@@ -1,9 +1,5 @@
 package de.hdm.VehicleRental.shared.bo;
 
-
-import java.lang.Object;
-
-
 public class Vehicle extends BusinessObject {
 	
 	/**

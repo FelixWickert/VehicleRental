@@ -1,10 +1,13 @@
 package de.hdm.VehicleRental.server.db;
 
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
+
 import de.hdm.VehicleRental.shared.bo.Vehicle;
-import de.hdm.VehicleRental.server.db.DBConnection;
-import java.sql.*;
 
 
 public class VehicleMapper {
