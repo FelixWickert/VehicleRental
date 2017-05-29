@@ -55,6 +55,8 @@ public interface ReportGeneratorAsync {
 	 * 
 	 * @param callback 
 	 */
-	public void createAllVehiclesReport(AsyncCallback callback); 
+	public void createAllVehiclesReport(AsyncCallback callback);
+
+	public void setVR(VehicleRental vR, SetBankCallback setBankCallback); 
 
 }

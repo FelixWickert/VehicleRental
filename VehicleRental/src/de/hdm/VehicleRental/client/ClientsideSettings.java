@@ -66,7 +66,7 @@ public class ClientsideSettings extends CommonSettings {
 	   
 	 * @return 
 	 */
-	public VehicleRentalAdministrationAsync getVehicleRentalVerwaltung() {
+	public static VehicleRentalAdministrationAsync getVehicleRentalVerwaltung() {
 	 	 return vehicleRentalVerwaltung; 
 	}
 	/**
@@ -108,7 +108,7 @@ public class ClientsideSettings extends CommonSettings {
 	   
 	 * @return 
 	 */
-	public ReportGeneratorAsync getReportGenerator() {
+	public static ReportGeneratorAsync getReportGenerator() {
 	 	 return reportGenerator; 
 	}
 	/**

@@ -29,7 +29,7 @@ public class Reservation extends BusinessObject {
 	 * 
 	 */
 
-	private static final Long serialVersionUID = 1L;
+	private static final Long serialVersionUID1 = 1L;
 
 	private int reservationID;
 	

@@ -23,7 +23,7 @@
 	<inherits name="com.google.gwt.logging.Logging" />
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='de.hdm.VehicleRental.client.VehicleRentalProjekt'/>
+  <entry-point class='de.hdm.VehicleRental.client.VehicleRental'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
