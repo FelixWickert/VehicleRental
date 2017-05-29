@@ -75,17 +75,17 @@ public class ProfileMapper {
 				 * a erhält den bisher maximalen, nun um 1 inkrementierten
 				 * Primärschlüssel.
 				 */
-				p.setId(rs.getInt("maxid") + 1);
+				p.setID(rs.getInt("maxid") + 1);
 
 				stmt = con.createStatement();
 
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
-				stmt.executeUpdate("INSERT INTO profil (ProfilID, Name, FührerscheinID, Email, Guthaben) " + "VALUES ("
-						+ p.getId() + ",'" 
-						+ p.getName() + "', " 
+				stmt.executeUpdate("INSERT INTO profil (ProfilID, LastName, DriversLicense, Email, FirstName) " + "VALUES ("
+						+ p.getID() + ",'" 
+						+ p.getLastName() + "', " 
 						+ p.getDriversLicence() + ", '" 
-						+ p.getEmail() + "', "
-						+ p.getBalance() + ")");
+						+ p.getEmail() + "', '"
+						+ p.getFirstName() + "')");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -120,8 +120,8 @@ public class ProfileMapper {
 			// Leeres SQL-Statement (JDBC) anlegen
 						Statement stmt = con.createStatement();
 			
-			stmt.executeUpdate("DELETE FROM profil " + "WHERE ProfilID= " + profileID.getId());
-
+			stmt.executeUpdate("DELETE FROM profil " + "WHERE ProfilID= " + profileID.getID());
+			
 		} catch (SQLException e2) {
 			e2.printStackTrace();	
 			}	
@@ -150,12 +150,15 @@ public class ProfileMapper {
 			 * werden die Profilattribute gesetzt 
 			 */
 			stmt.executeUpdate("UPDATE profil SET " + 
-			 "ProfilID= " + 		 	profileID.getId() + ", " + 
-			 "Name= '" + 			 	profileID.getName() + "', " + 
-			 "FührerscheinID= " + 		profileID.getDriversLicence() + ", " + 
+//			 "ProfilID= " + 		 	profileID.getId() + ", " + 
+			 "LastName= '" + 			profileID.getLastName() + "', " + 
+			 "DriversLicense= " + 		profileID.getDriversLicence() + ", " + 
 			 "Email= '" + 		 		profileID.getEmail() + "', " + 
-			 " Guthaben= " +      		profileID.getBalance() + 
-			 " WHERE ProfilID = " +     profileID.getId());
+			 " FirstName= '" +      		profileID.getFirstName() + "' " +
+			 " WHERE ProfilID = " +     profileID.getID());
+			
+//			UPDATE profil SET LastName= 'letzterName', DriversLicense= 1234, Email= 'email',  FirstName= 'ersterName' WHERE ProfilID = 9;
+			
 			
 			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
 		} catch (SQLException e) {
@@ -199,11 +202,11 @@ public class ProfileMapper {
 			if (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Profile a = new Profile();
-				a.setId(rs.getInt("ProfilID"));
-				a.setName(rs.getString("Name"));
-				a.setDriversLicence(rs.getInt("FührerscheinID"));
+				a.setID(rs.getInt("ProfilID"));
+				a.setLastName(rs.getString("LastName"));
+				a.setDriversLicence(rs.getInt("DriversLicense"));
 				a.setEmail(rs.getString("Email"));
-				a.setBalance(rs.getDouble("Guthaben"));
+				a.setFirstName(rs.getString("FirstName"));
 				return a;
 			}
 			
@@ -263,11 +266,11 @@ public class ProfileMapper {
 				while (rs.next()) {
 					// Ergebnis-Tupel in Objekt umwandeln
 					Profile p = new Profile();
-					p.setId(rs.getInt("ProfilID"));
-					p.setAdress(rs.getString("Name"));
-					p.setDriversLicence(rs.getInt("FührerscheinID"));
+					p.setID(rs.getInt("ProfilID"));
+					p.setLastName(rs.getString("LastName"));
+					p.setDriversLicence(rs.getInt("DriversLicense"));
 					p.setEmail(rs.getString("Email"));
-					p.setBalance(rs.getDouble("Guthaben"));
+					p.setFirstName(rs.getString("FirstName"));
 
 
 					/* HinzufÃ¼gen des neuen Objekts zum Ergebnisvektor */

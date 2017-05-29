@@ -47,7 +47,7 @@ public abstract class BusinessObject implements Serializable {
 	 * 
 	 * @return
 	 */
-	public int getId() {
+	public int getID() {
 		return id;
 	}
 
@@ -57,7 +57,7 @@ public abstract class BusinessObject implements Serializable {
 	 * 
 	 * @param id
 	 */
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 

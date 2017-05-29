@@ -1,36 +1,47 @@
 package de.hdm.VehicleRental.client;
-
 import com.google.gwt.core.client.*;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
+import de.hdm.VehicleRental.server.db.EntryPoint;
 import de.hdm.VehicleRental.shared.ReportGeneratorAsync;
 import de.hdm.VehicleRental.shared.VehicleRentalAdministrationAsync;
 import de.hdm.VehicleRental.shared.bo.Profile;
 
-/**
- * Entry-Point-Klasse des Projekts <b>BankProjekt</b>.
- */
+
+	/**
+	 * Diese Klasse implementiert den Entry Point. Ueber diesen kann sich der
+	 * Benutzer anmelden und gelangt so auf die Partnerboerse.
+	 */
 public class VehicleRental implements EntryPoint {
 
-  /**
-   * Da diese Klasse die Implementierung des Interface <code>EntryPoint</code>
-   * zusichert, benötigen wir eine Methode
-   * <code>public void onModuleLoad()</code>. Diese ist das GWT-Pendant der
-   * <code>main()</code>-Methode normaler Java-Applikationen.
-   */
-  public void onModuleLoad() {
+	  /**
+		 * Durch diese Methode wird vorerst ein neues LoginInfo-Objekt instanziiert.
+		 * Anschließend wird über das asynchrone Interface LoginServiceAsnyc ueberprüft, 
+		 * ob der Benutzer bereits angemeldet ist oder nicht. Danach wird dieser entweder 
+		 * die Methode loadDatingService() zum Laden der Startseite oder loadLogin() zum 
+		 * Laden des Login-Bereichs aufgerufen. 
+		 * 
+		 * Aus gwtproject.org übernommen 
+		 * @author GWT  
+		 */
+		public void onModuleLoad() {
+	  
+	  
+	  
     /*
      * Zunächst weisen wir der BankAdministration eine Bank-Instanz zu, die das
      * Kreditinstitut repräsentieren soll, für das diese Applikation arbeitet.
      */
-    VehicleRentalAdministrationAsync bankVerwaltung = ClientsideSettings.getVehicleRentalVerwaltung();
-    VehicleRental bank = new VehicleRental();
-    bank.setName("HdM Bank");
-    bank.setStreet("Nobelstr. 10");
-    bank.setZip(70569);
-    bank.setCity("Stuttgart");
+
+    VehicleRentalAdministrationAsync Verwaltung = ClientsideSettings.getVehicleRentalVerwaltung();
+    VehicleRental VR = new VehicleRental();
+    VR.setName("HdM Bank");
+    VR.setStreet("Nobelstr. 10");
+    VR.setZip(70569);
+    VR.setCity("Stuttgart");
+
     bankVerwaltung.setBank(bank, new SetBankCallback());
    
     /*

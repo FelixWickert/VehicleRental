@@ -2,6 +2,7 @@ package de.hdm.VehicleRental.server;
 
 import java.util.Date;
 import java.util.Vector;
+
 import de.hdm.VehicleRental.shared.bo.Vehicle;
 import de.hdm.VehicleRental.server.db.MemoryListMapper;
 import de.hdm.VehicleRental.shared.bo.Profile;
@@ -11,6 +12,14 @@ import de.hdm.VehicleRental.server.db.ReservationMapper;
 import de.hdm.VehicleRental.server.db.VehicleMapper;
 import de.hdm.VehicleRental.shared.bo.VehicleRental;
 import de.hdm.VehicleRental.shared.bo.MemoryList;
+
+
+
+import de.hdm.VehicleRental.server.db.VehicleMapper;
+import de.hdm.VehicleRental.server.db.ProfileMapper;
+import de.hdm.VehicleRental.server.db.ReservationMapper;
+
+
 
 /**
  * 
@@ -124,69 +133,34 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 	 * 
 	 */
 	private ReservationMapper reservationMapper;
+	
+	/**
+	 * 
+	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor
+	   * {@link #ReportGeneratorImpl()}. Diese Methode muss für jede Instanz von
+	   * <code>BankVerwaltungImpl</code> aufgerufen werden.
+	   * 
+	   * @see #ReportGeneratorImpl()
+	   
+	 */
+	/**
+	 * Diese Methode initialisiert die Applikationslogik und startet dabei die
+	 * Mapper
+	 */
+	public void init() throws IllegalArgumentException {
+		
+		this.vehicleMapper = VehicleMapper.vehicleMapper();
+		this.profileMapper = ProfileMapper.profileMapper();
+		this.reservationMapper = ReservationMapper.reservationMapper();
+	}
+	
+	
+	
+	
 	/**
 	 * Getter of vehicleMapper
 	 */
-	public VehicleMapper getVehicleMapper() {
-	 	 return vehicleMapper; 
-	}
-	/**
-	 * Setter of vehicleMapper
-	 */
-	public void setVehicleMapper(VehicleMapper vehicleMapper) { 
-		 this.vehicleMapper = vehicleMapper; 
-	}
-	/**
-	 * Getter of memoryListMapper
-	 */
-	public MemoryListMapper getMemoryListMapper() {
-	 	 return memoryListMapper; 
-	}
-	/**
-	 * Setter of memoryListMapper
-	 */
-	public void setMemoryListMapper(MemoryListMapper memoryListMapper) { 
-		 this.memoryListMapper = memoryListMapper; 
-	}
-	/**
-	 * Getter of vehicleRental
-	 */
-	public VehicleRental getVehicleRental() {
-	 	 return vehicleRental; 
-	}
-	/**
-	 * 
-	   * Setzen der Bank für die diese Bankverwaltung tätig ist.
-	   
-	 * @param vehicleRentalID 
-	 */
-	public void setVehicleRental(VehicleRental vehicleRental) { 
-		 this.vehicleRental = vehicleRental; 
-	}
-	/**
-	 * Getter of profileMapper
-	 */
-	public ProfileMapper getProfileMapper() {
-	 	 return profileMapper; 
-	}
-	/**
-	 * Setter of profileMapper
-	 */
-	public void setProfileMapper(ProfileMapper profileMapper) { 
-		 this.profileMapper = profileMapper; 
-	}
-	/**
-	 * Getter of reservationMapper
-	 */
-	public ReservationMapper getReservationMapper() {
-	 	 return reservationMapper; 
-	}
-	/**
-	 * Setter of reservationMapper
-	 */
-	public void setReservationMapper(ReservationMapper reservationMapper) { 
-		 this.reservationMapper = reservationMapper; 
-	}
+	
 	/**
 	 * 
 	 * @param profileID 
@@ -206,18 +180,7 @@ public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
 		// TODO Auto-generated method
 		return null;
 	 }
-	/**
-	 * 
-	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor
-	   * {@link #ReportGeneratorImpl()}. Diese Methode muss für jede Instanz von
-	   * <code>BankVerwaltungImpl</code> aufgerufen werden.
-	   * 
-	   * @see #ReportGeneratorImpl()
-	   
-	 */
-	public void init() { 
-		// TODO Auto-generated method
-	 }
+
 	/**
 	 * 
 	   * Löschen der übergebenen Buchung. Beachten Sie bitte auch die Anmerkungen zu
