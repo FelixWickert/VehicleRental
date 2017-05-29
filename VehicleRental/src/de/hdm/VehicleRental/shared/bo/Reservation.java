@@ -1,98 +1,43 @@
 package de.hdm.VehicleRental.shared.bo;
 
-import datatype.Long;
+import java.sql.Date;
 import java.util.Vector;
 
-/**
- * 
- * <p>
- * Realisierung einer exemplarischen Buchung. Eine Buchung zeichnet sich dadurch
- * aus, dass sie ein Quellkonto und ein Zielkonto besitzt, zwischen denen ein
- * Betrag, der als Geld interopretiert wird umgebucht wird.
- * </p>
- * 
- * @author thies
- * @version 1.0
- * 
- 
- * @author
- */
+
 public class Reservation extends BusinessObject {
 
-	/**
-	 * 
-	 */
-	private static final Long serialVersionUID;
-	/**
-	 * 
-	   * Der Betrag der Buchung. Dieser Betrag kann als Geldwert interpretiert
-	   * werden. Da ein Buchungssystem stets mit einer einzigen Währung arbeitet, 
-	   * ist deren Repräsentation in der Buchung nicht erforderlich.
-	   
-	 */
-	private int reservationNumber;
-	/**
-	 * 
-	 */
-	private EDate reservationDate;
-	/**
-	 * 
-	 */
+
+	private static final Long serialVersionUID = 1L;
+
+	private int reservationID;
+	
+	private Vehicle vehicle = null;
+	
+	private Date date;
+	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	public Profile getProfil() {
+		return profil;
+	}
+	public void setProfil(Profile profil) {
+		this.profil = profil;
+	}
+	private Profile profil = null;
+
 	private Vector allReservationsForVehicle;
-	/**
-	 * 
-	 */
+
 	private Vector allReservationsForProfile;
-	/**
-	 * Getter of serialVersionUID
-	 */
-	public Long getSerialVersionUID() {
-	 	 return serialVersionUID; 
-	}
-	/**
-	 * Setter of serialVersionUID
-	 */
-	public void setSerialVersionUID(Long serialVersionUID) { 
-		 this.serialVersionUID = serialVersionUID; 
-	}
-	/**
-	 * 
-	   * Setzen des Fremdschlüssels des Quellkontos.
-	   * @param sourceID der Fremdschlüssel
-	   
-	 * @return 
-	 */
-	public int getReservationNumber() {
-	 	 return reservationNumber; 
-	}
-	/**
-	 * 
-	   * Auslesen des Fremdschlüssels des Quellkontos.
-	   
-	 * @param reservationNumber 
-	 */
-	public void setReservationNumber(int reservationNumber) { 
-		 this.reservationNumber = reservationNumber; 
-	}
-	/**
-	 * 
-	   * Auslesen des Buchungswerts.
-	   
-	 * @return 
-	 */
-	public EDate getReservationDate() {
-	 	 return reservationDate; 
-	}
-	/**
-	 * 
-	   * Setzen des Buchungswerts.
-	   * @param money der zu buchenden Betrag
-	   
-	 * @param reservationDate 
-	 */
-	public void setReservationDate(EDate reservationDate) { 
-		 this.reservationDate = reservationDate; 
-	}
 	/**
 	 * Getter of allReservationsForVehicle
 	 */
@@ -135,5 +80,12 @@ public class Reservation extends BusinessObject {
 		// TODO Auto-generated method
 		return null;
 	 } 
+	
+	public int getReservationID() {
+		return reservationID;
+	}
+	public void setReservationID(int reservationID) {
+		this.reservationID = reservationID;
+	}
 
 }
