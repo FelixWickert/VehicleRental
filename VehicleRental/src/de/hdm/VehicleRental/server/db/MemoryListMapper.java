@@ -63,7 +63,7 @@ public class MemoryListMapper {
 
 				// Jetzt erst erfolgt die tatsächliche Einfügeoperation
 				stmt.executeUpdate("INSERT INTO MemoryList (MerkListeID, AutoID, ProfilID) " + "VALUES ("
-						+ ml.getMemoryListID()() + ",'" + ml.getVehicleID() + "', " + ml.getProfileID() + " ")");
+						+ ml.getMemoryListID() + ",'" + ml.getVehicleID() + "', " + ml.getProfileID() + " ")");
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -103,7 +103,7 @@ public class MemoryListMapper {
 	   
 	 * @return 
 	 */
-	public static MemoryListMapper memoryListMapper() { 
+	public MemoryListMapper memoryListMapper() { 
 		// TODO Auto-generated method
 		return null;
 	 }
@@ -118,7 +118,7 @@ public class MemoryListMapper {
 	 * @param memoryListID 
 	 * @return 
 	 */
-	public MemoryListMapper update(MemoryListMapper memoryListID) { 
+	public MemoryListMapper update(MemoryList memoryListID) { 
 		// TODO Auto-generated method
 		return null;
 	 }
@@ -166,6 +166,30 @@ public class MemoryListMapper {
 	public MemoryListMapper findByID(int memoryListID) { 
 		// TODO Auto-generated method
 		return null;
-	 } 
+	 }
+
+
+	public MemoryList findByID(Profile findByID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public MemoryListMapper findByVehicleID(int vehicleID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void delete(MemoryList memoryListID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public MemoryList getID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	} 
 
 }

@@ -1,12 +1,17 @@
 package de.hdm.VehicleRental.server;
 
+import java.sql.Date;
 import java.util.Vector;
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+import de.hdm.VehicleRental.shared.bo.MemoryList;
+import de.hdm.VehicleRental.shared.bo.Profile;
+import de.hdm.VehicleRental.shared.bo.Vehicle;
 import de.hdm.VehicleRental.server.db.VehicleMapper;
+import de.hdm.VehicleRental.server.db.MemoryListMapper;
 import de.hdm.VehicleRental.server.db.ProfileMapper;
 import de.hdm.VehicleRental.server.db.ReservationMapper;
-
 
 /**
  * 
@@ -45,7 +50,7 @@ import de.hdm.VehicleRental.server.db.ReservationMapper;
  * Verbindung. Die Erstellung und Pflege der Async Interfaces wird durch das
  * Google Plugin semiautomatisch unterstützt. Weitere Informationen unter
  * {@link BankAdministrationAsync}.</li>
- * <li> {@link RemoteServiceServlet}: Jede Server-seitig instantiierbare und
+ * <li>{@link RemoteServiceServlet}: Jede Server-seitig instantiierbare und
  * Client-seitig über GWT RPC nutzbare Klasse muss die Klasse
  * <code>RemoteServiceServlet</code> implementieren. Sie legt die funktionale
  * Basis für die Anbindung von <code>BankVerwaltungImpl</code> an die Runtime
@@ -84,300 +89,309 @@ import de.hdm.VehicleRental.server.db.ReservationMapper;
  * @see BankAdministrationAsync
  * @see RemoteServiceServlet
  * @author Thies
- 
+ * 
  * @author
  */
-public class VehicleRentalAdministrationImpl extends RemoteServiceServlet {
+public class VehicleRentalAdministrationImpl extends RemoteServiceServlet implements VehicleRentalAdministration {
+
+	public VehicleRentalAdministrationImpl() throws IllegalArgumentException {
+		/*
+		 * Eine weitergehende Funktion muss der No-Argument-Constructor nicht
+		 * haben. Er muss einfach vorhanden sein.
+		 */
+	}
 
 	/**
 	 * 
-	   * Referenz auf den DatenbankMapper, der Kontoobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private VehicleMapper vehicleMapper;
-	/**
-	 * 
-	   * Referenz auf den TransactionMapper, der Buchungsobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private MemoryListMapper memoryListMapper;
-	/**
-	 * 
-	   * Referenz auf das zugehörige Bank-Objekt.
-	   
-	 */
-	private VehicleRental vehicleRental;
-	/**
-	 * 
-	   * Referenz auf den DatenbankMapper, der Kundenobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private ProfileMapper profileMapper;
-	/**
+	 * Referenz auf die Mapper, die Daten mit der Datenbank abgleichen.
 	 * 
 	 */
-	private ReservationMapper reservationMapper;
-	
-	/**
-	 * 
-	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor
-	   * {@link #ReportGeneratorImpl()}. Diese Methode muss für jede Instanz von
-	   * <code>BankVerwaltungImpl</code> aufgerufen werden.
-	   * 
-	   * @see #ReportGeneratorImpl()
-	   
-	 */
+	private ProfileMapper profileMapper = null;
+	private ReservationMapper reservationMapper = null;
+	private VehicleMapper vehicleMapper = null;
+	// private MemoryListMapper memoryListMapper = null;
+
 	/**
 	 * Diese Methode initialisiert die Applikationslogik und startet dabei die
 	 * Mapper
 	 */
 	public void init() throws IllegalArgumentException {
-		
+
 		this.vehicleMapper = VehicleMapper.vehicleMapper();
 		this.profileMapper = ProfileMapper.profileMapper();
 		this.reservationMapper = ReservationMapper.reservationMapper();
+		// this.memoryListMapper = MemoryListMapper.memoryListMapper();
 	}
-	
-	
-	
-	
-	/**
-	 * Getter of vehicleMapper
+
+	/*
+	 * *************************************************************************
+	 * ** ABSCHNITT, Beginn: Methoden f�r Profile-Objekte
+	 * *************************************************************************
+	 * **
 	 */
-	
-	/**
-	 * 
-	 * @param profileID 
-	 * @param vehicleID 
-	 * @return 
-	 */
-	public MemoryList insertToMemoryList(int profileID, int vehicleID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @param profileID 
-	 * @return 
-	 */
-	public MemoryList getMemoryList(int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
+
+	public Profile createProfile(String firstName, String lastName, String email) {
+		Profile p = new Profile();
+		p.setFirstName(firstName);
+		p.setLastName(lastName);
+		p.setEmail(email);
+		return p;
+	}
 
 	/**
 	 * 
-	   * Löschen der übergebenen Buchung. Beachten Sie bitte auch die Anmerkungen zu
-	   * {@link #delete(Customer)} und {@link #delete(Account)}.
-	   * 
-	   * @see #delete(Customer)
-	   * @see #delete(Account)
-	   
-	 * @param reservationID 
+	 * Auslesen des Kontos mit einer bestimmten Id
+	 * 
+	 * @param profileID
+	 * @return
 	 */
-	public void delete(Reservation reservationID) { 
-		// TODO Auto-generated method
-	 }
+	public Profile getProfileById(int profileID) throws IllegalArgumentException {
+		Profile p = new Profile();
+		p = profileMapper.findByID(profileID);
+
+		Vector<Vehicle> vehicles = new Vector<>();
+		vehicles = reservationMapper.findAllVehiclesByProfile(p);
+		for (Vehicle vehicle : vehicles) {
+			vehicle = vehicleMapper.findByID(vehicle.getID());
+			p.addVehicleToReservation(vehicle);
+		}
+		return p;
+	}
+
 	/**
 	 * 
-	 * @param memoryListID 
+	 * Speichern eines Kontos.
+	 * 
+	 * @param reservationID
 	 */
-	public void delete(MemoryList memoryListID) { 
-		// TODO Auto-generated method
-	 }
+	public Profile save(Profile profile) throws IllegalArgumentException {
+
+		// Existiert das Profil schon?
+		if (profileMapper.findByID(profile.getID()) != null) {
+			// Profil existiert schon und muss nur geändert werden
+			profileMapper.update(profile);
+			
+			/**
+			 * TODO: erst prüfen ob ein Eintrag bereits existiert, wenn nein,
+			 * dann eintrag schreiben sollte er berteits existieren, dann tue
+			 * nichts
+			 */
+			Vector<Vehicle> vehicleVector = new Vector<>();
+			vehicleVector = profile.getReservations();
+			
+			for (Vehicle vehicle : vehicleVector) {
+			
+			if (vehicle.equals(vehicleMapper.findByID(vehicle.getID()))){
+				break;
+			} else
+					profile.addVehicleToReservation(vehicle);
+					vehicle.addProfileToReservation(profile);
+					reservationMapper.insert(vehicle, profile);
+			}
+			
+			// Profil existiert noch nicht und muss angelegt werden
+			profileMapper.insert(profile);
+		}
+		return profile;
+	}
+
 	/**
 	 * 
-	   * Speichern eines Kontos.
-	   
-	 * @param reservationID 
+	 * Löschen eines Kunden. Natürlich würde ein reales System zur Verwaltung
+	 * von Bankkunden ein Löschen allein schon aus Gründen der Dokumentation
+	 * nicht bieten, sondern deren Status z.B von "aktiv" in "ehemalig" ändern.
+	 * Wir wollen hier aber dennoch zu Demonstrationszwecken eine Löschfunktion
+	 * vorstellen.
+	 * 
+	 * @param profileID
 	 */
-	public void save(Reservation reservationID) { 
-		// TODO Auto-generated method
-	 }
+	public void delete(Profile profile) throws IllegalArgumentException {
+		
+		reservationMapper.deleteAllReserverationsOfProfile(profile);
+		profileMapper.delete(profile);
+	}
+
 	/**
 	 * 
-	   * Löschen des übergebenen Kontos. Beachten Sie bitte auch die Anmerkungen zu
-	   * {@link #delete(Customer)}. Beim Löschen des Kontos werden sämtliche damit
-	   * in Verbindung stehenden Buchungen gelöscht.
-	   * 
-	   * @see #delete(Customer)
-	   
-	 * @param profileID 
+	 * Auslesen aller Kunden.
+	 * 
+	 * @return
 	 */
-	public void update(Profile profileID) { 
-		// TODO Auto-generated method
-	 }
+	public Vector<Profile> getAllProfiles() throws IllegalArgumentException {
+		return profileMapper.getAllProfiles();
+	}
+
+	/*
+	 * *************************************************************************
+	 * ** ABSCHNITT, Beginn: Methoden f�r Vehicle-Objekte
+	 * *************************************************************************
+	 * **
+	 */
+
 	/**
 	 * 
-	   * Auslesen aller Konten des übergeben Kunden.
-	   
-	 * @param profileID 
-	 * @return 
+	 * Auslesen des Kontos mit einer bestimmten Id
+	 * 
+	 * @param profileID
+	 * @return
 	 */
-	public Vector getAllMemoryList(int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	public Vehicle getVehicleById(int vehicleID) throws IllegalArgumentException {
+		Vehicle v = new Vehicle();
+		v = vehicleMapper.findByID(vehicleID);
+
+		Vector<Profile> profiles = new Vector<>();
+		profiles = reservationMapper.findAllProfilesByVehicle(v);
+		for (Profile profile : profiles) {
+			profile = profileMapper.findByID(profile.getID());
+			v.addProfileToReservation(profile);
+		}
+		return v;
+	}
+
 	/**
 	 * 
-	   * Auslesen eines Kunden anhand seiner Kundennummer.
-	   
-	 * @param profileID 
-	 * @return 
+	 * Auslesen sämtlicher Konten dieses Systems.
+	 * 
+	 * @return
 	 */
-	public Profile getProfileByID(int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	public Vector<Vehicle> getAllVehicles() throws IllegalArgumentException {
+		return vehicleMapper.getAllVehicles();
+	}
+
+	/*
+	 * *************************************************************************
+	 * ** ABSCHNITT, Beginn: Methoden f�r Reservation-Objekte
+	 * *************************************************************************
+	 * **
+	 */
+
 	/**
 	 * 
-	   * Löschen eines Kunden. Natürlich würde ein reales System zur Verwaltung von
-	   * Bankkunden ein Löschen allein schon aus Gründen der Dokumentation nicht
-	   * bieten, sondern deren Status z.B von "aktiv" in "ehemalig" ändern. Wir
-	   * wollen hier aber dennoch zu Demonstrationszwecken eine Löschfunktion
-	   * vorstellen.
-	   
-	 * @param profileID 
+	 * Speichern eines Kontos.
+	 * 
+	 * @param reservationID
 	 */
-	public void delete(Profile profileID) { 
-		// TODO Auto-generated method
-	 }
+
+	/**
+	 * MIT DATE
+	 */
+	public void save2(Reservation reservationID) throws IllegalArgumentException {
+
+		// Pr�fen, ob Reservation schon existiert
+		if (reservationMapper.getID(reservationID.getID()) != null) {
+			// Der Merkzettel existiert bereits
+			reservationMapper.update(reservationID);
+			// Der Merkzettel existiert noch nicht
+		} else {
+			reservationMapper.insert(reservationID.getVehicle(), reservationID.getProfil(), reservationID.getDate());
+		}
+	}
+
+	
+
 	/**
 	 * 
-	 * @param reservationID 
+	 * @param reservationNumber
+	 * @param vehicleNumber
+	 * @param date
+	 * @param profileID
+	 * @return
 	 */
-	public void update(Reservation reservationID) { 
-		// TODO Auto-generated method
-	 }
+	public void createReservation(Vehicle vehicle, Profile profile) {
+		//TODO existiert schon verbindung wenn nein insert wenn ja update
+		
+		// Existiert das Profil schon?
+		if (profileMapper.findByID(profile.getID()) != null) {
+			// Profil existiert schon und muss nur geändert werden
+			profileMapper.update(profile);
+		
+		
+		if (reservationMapper.findByID(profile.getReservations().contains(vehicle)) != null) {
+				// Profil existiert schon und muss nur geändert werden
+				profileMapper.update(profile);
+		
+		
+		reservationMapper.insert(vehicle, profile);
+	}
+
 	/**
 	 * 
-	 * @param vehicleID 
-	 * @return 
-	 */
-	public MemoryList deleteFromMemoryList(int vehicleID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
+	 * Löschen der übergebenen Buchung. Beachten Sie bitte auch die Anmerkungen
+	 * zu {@link #delete(Customer)} und {@link #delete(Account)}.
 	 * 
-	   * Auslesen sämtlicher Konten dieses Systems.
-	   
-	 * @return 
-	 */
-	public Vector getAllVehicles() { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
+	 * @see #delete(Customer)
+	 * @see #delete(Account)
 	 * 
-	 * @param memoryListID 
+	 * @param reservationID
 	 */
-	public void save(MemoryList memoryListID) { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	 * @param reservationNumber 
-	 * @param vehicleNumber 
-	 * @param date 
-	 * @param profileID 
-	 * @return 
+	public void delete(Reservation reservationID) throws IllegalArgumentException {
+		reservationMapper.delete(reservationID);
+	}
+
+	/*
+	 * *************************************************************************
+	 * ** ABSCHNITT, Beginn: Methoden f�r MemoryList-Objekte
+	 * *************************************************************************
+	 * **
 	 */
-	public Reservation createReservation(int reservationNumber, int vehicleNumber, EDate date, int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	   * Auslesen der Bank für die diese Bankverwaltung gewissermaßen tätig ist.
-	   
-	 * @param vehicleID 
-	 * @return 
-	 */
-	public Vehicle getVehicleByID(int vehicleID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @param memoryListID 
-	 */
-	public void update(MemoryList memoryListID) { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	   * <p>
-	   * Anlegen eines neuen Kunden. Dies führt implizit zu einem Speichern des
-	   * neuen Kunden in der Datenbank.
-	   * </p>
-	   * 
-	   * <p>
-	   * <b>HINWEIS:</b> Änderungen an Customer-Objekten müssen stets durch Aufruf
-	   * von {@link #save(Customer c)} in die Datenbank transferiert werden.
-	   * </p>
-	   * 
-	   * @see save(Customer c)
-	   
-	 * @param firstName 
-	 * @param lastName 
-	 * @param email 
-	 * @return 
-	 */
-	public Profile createProfile(String firstName, String lastName, String email) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	 * @param memoryListID 
-	 * @return 
-	 */
-	public MemoryList createMemoryList(MemoryList memoryListID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	   * Auslesen des Kontos mit einer bestimmten Id
-	   
-	 * @param profileID 
-	 * @return 
-	 */
-	public Profile getProfileById(int profileID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	   * Speichern eines Kunden.
-	   
-	 * @param profileID 
-	 */
-	public void save(Profile profileID) { 
-		// TODO Auto-generated method
-	 }
-	/**
-	 * 
-	 * @param List 
-	 * @return 
-	 */
-	public Vector getAllProfiles(Profile List) { 
-		// TODO Auto-generated method
-		return null;
-	 }
-	/**
-	 * 
-	   * Auslesen aller Kunden.
-	   
-	 * @return 
-	 */
-	public Vector getAllProfiles() { 
-		// TODO Auto-generated method
-		return null;
-	 } 
+
+	// /**
+	// *
+	// * @param memoryListID
+	// * @return
+	// */
+	// public MemoryList createMemoryList(MemoryList memoryListID) {
+	// // TODO Auto-generated method
+	// return null;
+	// }
+
+	// /**
+	// *
+	// * @param profileID
+	// * @param vehicleID
+	// * @return
+	// */
+	// public MemoryList insertToMemoryList(int profileID, int vehicleID) {
+	// // TODO Auto-generated method
+	// return null;
+	// }
+
+	// /**
+	// *
+	// * @param memoryListID
+	// */
+	// public void delete(MemoryList memoryListID) throws
+	// IllegalArgumentException {
+	// memoryListMapper.delete(memoryListID);
+	// }
+
+	// /**
+	// *
+	// * @param vehicleID
+	// * @return
+	// */
+	// public MemoryList deleteFromMemoryList(int vehicleID) throws
+	// IllegalArgumentException {
+	// MemoryListMapper.memoryListMapper().deleteVehicleFromList(memoryListMapper.findByVehicleID(vehicleID),
+	// vehicleID);
+	// return null;
+	// }
+
+	// /**
+	// *
+	// * @param memoryListID
+	// */
+	// public void save(MemoryList memoryListID) throws IllegalArgumentException
+	// {
+	//
+	// // Existiert das Profil schon?
+	// if (MemoryListMapper.getID(memoryListID.getID()) != null) {
+	// // Profil existiert schon und muss nur geändert werden
+	// MemoryListMapper.update(memoryListID);
+	// } else {
+	// // Profil existiert noch nicht und muss angelegt werden
+	// MemoryListMapper.insert(memoryListID);
+	// }
+	// }
 
 }

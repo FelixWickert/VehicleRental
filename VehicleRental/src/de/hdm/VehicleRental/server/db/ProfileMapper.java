@@ -9,6 +9,10 @@ import java.sql.*;
 
 public class ProfileMapper {
 
+	
+	
+	
+	
 	/**
 	 * 
 	   * Die Klasse VehicleMapper wird nur einmal instantiiert. Man spricht hierbei
@@ -86,6 +90,7 @@ public class ProfileMapper {
 						+ p.getDriversLicence() + ", '" 
 						+ p.getEmail() + "', '"
 						+ p.getFirstName() + "')");
+				
 			}
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -256,7 +261,6 @@ public class ProfileMapper {
 				/* Leeres Statement wird angelegt */
 				Statement stmt = con.createStatement();
 
-				
 				ResultSet rs = stmt.executeQuery("SELECT * FROM profil");
 
 				/*

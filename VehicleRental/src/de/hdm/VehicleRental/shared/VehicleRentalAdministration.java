@@ -1,95 +1,62 @@
 package de.hdm.VehicleRental.shared;
 
-import de.hdm.VehicleRental.server.MemoryListMapper;
-import de.hdm.VehicleRental.server.Profile;
-import de.hdm.VehicleRental.server.ProfileMapper;
 import de.hdm.VehicleRental.server.RemoteServiceServlet;
-import de.hdm.VehicleRental.server.ReservationMapper;
-import de.hdm.VehicleRental.server.VehicleMapper;
-import de.hdm.VehicleRental.server.VehicleRental;
-import de.hdm.VehicleRental.server.db.MemoryList;
 
 import java.util.Vector;
-
-import datatype.Vehicle;
-import de.hdm.VehicleRental.shared.bo.Reservation;
-
 
 //Interface, das von der Verwaltungsklasse VehicalRentalAdministrationImpl implementiert wird
 
 public interface VehicleRentalAdministration {
 
-	
-	private ReservationMapper reservationMapper;
-	/**
-	 * 
-	   * Referenz auf den DatenbankMapper, der Kundenobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private ProfileMapper profileMapper;
-	/**
-	 * 
-	   * Referenz auf den TransactionMapper, der Buchungsobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private MemoryListMapper memoryListMapper;
-	/**
-	 * 
-	   * Referenz auf das zugehörige Bank-Objekt.
-	   
-	 */
-	private VehicleRental vehicleRental;
-	/**
-	 * 
-	   * Referenz auf den DatenbankMapper, der Kontoobjekte mit der Datenbank
-	   * abgleicht.
-	   
-	 */
-	private VehicleMapper vehicleMapper;
 	/**
 	 * Getter of reservationMapper
 	 */
 	public ReservationMapper getReservationMapper() {
 	 	 return reservationMapper; 
 	}
+
 	/**
 	 * Setter of reservationMapper
 	 */
 	public void setReservationMapper(ReservationMapper reservationMapper) { 
 		 this.reservationMapper = reservationMapper; 
 	}
+
 	/**
 	 * Getter of profileMapper
 	 */
 	public ProfileMapper getProfileMapper() {
 	 	 return profileMapper; 
 	}
+
 	/**
 	 * Setter of profileMapper
 	 */
 	public void setProfileMapper(ProfileMapper profileMapper) { 
 		 this.profileMapper = profileMapper; 
 	}
+
 	/**
 	 * Getter of memoryListMapper
 	 */
 	public MemoryListMapper getMemoryListMapper() {
 	 	 return memoryListMapper; 
 	}
+
 	/**
 	 * Setter of memoryListMapper
 	 */
 	public void setMemoryListMapper(MemoryListMapper memoryListMapper) { 
 		 this.memoryListMapper = memoryListMapper; 
 	}
+
 	/**
 	 * Getter of vehicleRental
 	 */
 	public VehicleRental getVehicleRental() {
 	 	 return vehicleRental; 
 	}
+
 	/**
 	 * 
 	   * Setzen der Bank für die diese Bankverwaltung tätig ist.
@@ -99,18 +66,21 @@ public interface VehicleRentalAdministration {
 	public void setVehicleRental(VehicleRental vehicleRental) { 
 		 this.vehicleRental = vehicleRental; 
 	}
+
 	/**
 	 * Getter of vehicleMapper
 	 */
 	public VehicleMapper getVehicleMapper() {
 	 	 return vehicleMapper; 
 	}
+
 	/**
 	 * Setter of vehicleMapper
 	 */
 	public void setVehicleMapper(VehicleMapper vehicleMapper) { 
 		 this.vehicleMapper = vehicleMapper; 
 	}
+
 	/**
 	 * 
 	 * @param memoryListID 
@@ -118,6 +88,7 @@ public interface VehicleRentalAdministration {
 	public void delete(MemoryList memoryListID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	 * @param profileID 
@@ -128,6 +99,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * Auslesen sämtlicher Konten dieses Systems.
@@ -138,6 +110,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * Auslesen des Kontos mit einer bestimmten Id
@@ -149,6 +122,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * <p>
@@ -172,6 +146,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	 * @param memoryListID 
@@ -181,6 +156,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	 * @param List 
@@ -190,6 +166,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	 * @param profileID 
@@ -199,6 +176,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * Initialsierungsmethode. Siehe dazu Anmerkungen zum No-Argument-Konstruktor
@@ -211,6 +189,7 @@ public interface VehicleRentalAdministration {
 	public void init() { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Speichern eines Kunden.
@@ -220,6 +199,7 @@ public interface VehicleRentalAdministration {
 	public void save(Profile profileID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	 * @param reservationID 
@@ -227,6 +207,7 @@ public interface VehicleRentalAdministration {
 	public void update(Reservation reservationID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Auslesen aller Kunden.
@@ -237,6 +218,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * Speichern eines Kontos.
@@ -246,6 +228,7 @@ public interface VehicleRentalAdministration {
 	public void save(Reservation reservationID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Löschen des übergebenen Kontos. Beachten Sie bitte auch die Anmerkungen zu
@@ -259,6 +242,7 @@ public interface VehicleRentalAdministration {
 	public void update(Profile profileID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	 * @param vehicleID 
@@ -267,6 +251,7 @@ public interface VehicleRentalAdministration {
 	public void deleteFromMemoryList(int vehicleID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Auslesen aller Konten des übergeben Kunden.
@@ -278,6 +263,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * Auslesen der Bank für die diese Bankverwaltung gewissermaßen tätig ist.
@@ -289,6 +275,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	 * @param date 
@@ -301,6 +288,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	 * @param memoryListID 
@@ -308,6 +296,7 @@ public interface VehicleRentalAdministration {
 	public void save(MemoryList memoryListID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	 * @param memoryListID 
@@ -315,6 +304,7 @@ public interface VehicleRentalAdministration {
 	public void update(MemoryList memoryListID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Löschen der übergebenen Buchung. Beachten Sie bitte auch die Anmerkungen zu
@@ -328,6 +318,7 @@ public interface VehicleRentalAdministration {
 	public void delete(Reservation reservationID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Auslesen eines Kunden anhand seiner Kundennummer.
@@ -339,6 +330,7 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	   * Löschen eines Kunden. Natürlich würde ein reales System zur Verwaltung von
@@ -352,6 +344,7 @@ public interface VehicleRentalAdministration {
 	public void delete(Profile profileID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	   * Setzen der Bank für die diese Bankverwaltung tätig ist.
@@ -361,6 +354,7 @@ public interface VehicleRentalAdministration {
 	public void setVehicleRental(int vehicleRentalID) { 
 		// TODO Auto-generated method
 	 }
+
 	/**
 	 * 
 	 * @param profileID 
@@ -373,10 +367,12 @@ public interface VehicleRentalAdministration {
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	public MemoryList deleteFromMemoryList(int vehicleID) { 
 		// TODO Auto-generated method
 		return null;
 	 }
+
 	/**
 	 * 
 	 * @param vehicleNumber 
@@ -388,6 +384,6 @@ public interface VehicleRentalAdministration {
 	public Reservation createReservation(int vehicleNumber, EDate date, int profileID, int reservationNumber) { 
 		// TODO Auto-generated method
 		return null;
-	 } 
+	 }
 
 }
