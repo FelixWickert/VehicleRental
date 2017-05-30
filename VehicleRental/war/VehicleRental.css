@@ -1,125 +1,132 @@
-body {
-    text-align: center;  /* Zentrierung im Internet Explorer */
-  }
+/** Add css rules here for your application. */
 
 
+/** Example rules used by the template application (remove for your app) */
+h1 {
+  font-size: 2.5vw;
+}
+h2 {
+  font-size: 3.0vh;}
 
-.buttona{
+.dockpanel{
+	background-color:navy;
+width:2024px;
+height: 1000px;
+}
+
+.headline{
+
+font-size:45px;
+color:navy;	
+	    border-style: dotted;
+    border-width: 4px;
 	
-	color:red;
-	font-size:18pt;
-	font-weight:bold;
 	
-    margin-top: 400px;
-    margin-bottom: 400px;
-    margin-right: 400px;
-    margin-left: 400px;
+}
+.verticalpanel{
+	border-style:none;
+	border-width:4px;
+}
+
+.table{
+	
+	border-style:solid;
+	border-with:4px
+}
+.l1{
+	
+ 
+    font-size:30px;
+    padding-top: 50px;
+    padding-right: 35px;
+    padding-bottom: 50px;
+    padding-left: 35px;
+    text-align:center;
+}
+.l2{
+	   
+    padding-top: 50px;
+        font-size:30px;
+    
+    padding-right: 35px;
+    padding-bottom: 50px;
+    padding-left: 35px;
+      margin-right: 150px;
+    margin-left: 150px;
+        text-align:center;
+    
+}
+.l3{
+
+        font-size:30px;
     
     padding-top: 50px;
-    padding-right: 30px;
-    padding-bottom: 150px;
-    padding-left: 80px;
+    padding-right: 35px;
+    padding-bottom: 50px;
+    padding-left: 35px;
+        text-align:center;
+    
 }
-
-h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 20px;
+.gwt-Button {
+    display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
   text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin-bottom: 20px;
+ margin-top: 20px;
+  
+    }
+ .button:hover {
+ background-color: #3e8e41
+}
+.image{
+	    border-style: none;
+    border-width: 4px;
+    margin-right:1px;
+    width:200px;
+    height:200px;
 }
 
-.bankproject-headline {
-	font-size: 12pt;
-	font-weight: bold;
-	color: #777777;
-	margin: 0px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	text-align: left;
+.label{
+	
+	font-size:56px;
+	color:navy;
+	    margin-right:1px;
+	
+	    border-style: none;
+    border-width: 4px;
+}
+.tabpanel{
+	
+	border-style:dotted;
+	margin-left:150px;
+	width:1500px;
+	height:900px;
+	
 }
 
-.bankproject-simpletext {
-	font-size: 100%;
-	font-weight: normal;
-	padding: 3px;
+
+
+
+.tabpanel-activeNavItem {
+    background: red;
+    font-color:blue;
 }
 
-.bankproject-label {
-	font-size: 120%;
-	font-weight: bold;
-	font-style: italic;
-	color: gray;
-	padding-bottom: 0.5em;
+.header{
+	
+    border-style: none;
+    border-width: 4px;
+	
 }
-
-.bankproject-textfield {
-	font-size: 100%;
-	font-weight: normal;
-	padding: 3px;
-	width: 15em;
-}
-
-.bankproject-menubutton {
-	font-size: 100%;
-	font-weight: bold;
-	width: 15em;
-	margin-bottom: 1em;
-}
-
-.bankproject-button {
-	font-size: 100%;
-	font-weight: bold;
-}
-
-div#TopLevelFrame {
-	width: 800px;
-	min-width: 300px;
-	border: 1px solid silver;
-	margin: 0 auto;      /* standardkonforme horizontale Zentrierung */
- }
-
-div#Details {
-	margin-left: 20em;
-	min-height: 400px;
-	max-height: 500px;
-	padding: 1em 1em;
-	border-top: 1px dashed silver;
-	border-left: 1px dashed silver;
-	overflow:scroll;
-}
-
-div#Navigator {
-	float: left;
-	width: 18em;
-	min-height: 300px;
-	padding: 1em 1em;
-	border-top: 1px dashed silver;
-}
-
-div#Header {
-	margin: 0 auto;      /* standardkonforme horizontale Zentrierung */
-	/* border: 1px dashed silver; */
-}
-
-div#Trailer {
-	clear: both;
-	padding: 10px 0;
-	margin: 0 auto;      /* standardkonforme horizontale Zentrierung */
-	border-top: 1px dashed silver;
-	font-size: 80%;
-	text-align: center;
-}
-
-/**
-	Ab hier: Alte Deklarationen. K�nnen ggf. gel�scht werden.
-*/
-.sendButton {
-  display: block;
-  font-size: 16pt;
-}
-
-/** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
   width: 400px;
 }
@@ -136,3 +143,17 @@ div#Trailer {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
