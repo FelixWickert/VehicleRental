@@ -4,6 +4,7 @@ package shared;
 import java.util.List;
 import java.util.Vector;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -22,5 +23,7 @@ import shared.bo.VehicleRental;
 @RemoteServiceRelativePath("vehi")
 public interface VehicleRentalAdministration extends RemoteService {
     
+    public String getTextForLabel( String text) ;
+    public int getNumber(int numb);
     
 }

@@ -6,13 +6,13 @@
   </welcome-file-list>
 
  <servlet>
-    <servlet-name>VehicleRental</servlet-name>
+    <servlet-name>VehicleRentalAdministration</servlet-name>
     <servlet-class>server.VehicleRentalAdministrationImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>VehicleRental</servlet-name>
-    <url-pattern>VehicleRental/VehicleRental</url-pattern>
+    <servlet-name>VehicleRentalAdministration</servlet-name>
+    <url-pattern>VehicleRental/vehi</url-pattern>
   </servlet-mapping>
 
 

@@ -15,8 +15,8 @@ import shared.bo.VehicleRental;
 
 public interface VehicleRentalAdministrationAsync  {
 
-    void getUserList(AsyncCallback<List<Object>> callback);
-
-    void getUser(String id, AsyncCallback<Object> callback);
+    void getTextForLabel(String text, AsyncCallback<String> callback);
+    void getNumber(int numb, AsyncCallback <Integer>callback);
+   
 
 }

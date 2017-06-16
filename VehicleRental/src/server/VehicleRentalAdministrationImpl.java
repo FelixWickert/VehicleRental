@@ -21,15 +21,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
-
+import com.google.gwt.user.client.Event;
 
 public class VehicleRentalAdministrationImpl extends RemoteServiceServlet implements
         VehicleRentalAdministration {
 
     private static final long serialVersionUID = 1L;
+    public VehicleMapper vmapper =null;
 
-    private List userList = new ArrayList();
 
-    public VehicleRentalAdministrationImpl() {
+
+    @Override
+    public String getTextForLabel(String text) {
+	// TODO Auto-generated method stub
+	
+	String text1 = "Das Ist ein Test";
+	return text1;
+    
+    }
+
+
+
+    public int getNumber(int numb) {
+	int a = 10;
+	return 10;
     }}

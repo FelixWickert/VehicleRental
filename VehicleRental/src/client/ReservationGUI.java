@@ -36,6 +36,7 @@ public class ReservationGUI {
 	Label lb2 = new Label("Ende");
 	Button button1 = new Button("butt");
 	Button button2 = new Button("butt2");
+	button2.addClickHandler(new ClickHandlerCollection());
 	
 	
 	hp.add(lb);

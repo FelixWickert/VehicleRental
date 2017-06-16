@@ -5,7 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 
-public class ClickHandlerCollection {
+public class ClickHandlerCollection implements ClickHandler {
     
     class HistoryHandler implements ClickHandler{
 	    
@@ -23,6 +23,12 @@ public class ClickHandlerCollection {
 		    }
 		
 		}
+
+    @Override
+    public void onClick(ClickEvent event) {
+	// TODO Auto-generated method stub
+	
+    }
 	    
 	
 
