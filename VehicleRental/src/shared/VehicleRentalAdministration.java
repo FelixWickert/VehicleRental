@@ -1,6 +1,7 @@
 package shared;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -24,6 +25,14 @@ import shared.bo.VehicleRental;
 public interface VehicleRentalAdministration extends RemoteService {
     
     public String getTextForLabel( String text) ;
-    public int getNumber(int numb);
     
+    
+    
+    public ArrayList <Vehicle> getVehicleList();
+    
+   
+public Reservation createReservationFor(Vehicle v);
+
+
+
 }

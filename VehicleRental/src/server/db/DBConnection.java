@@ -10,7 +10,7 @@ public class DBConnection {
 
 	private static Connection con = null;
 
-	private static String urlLocal = "jdbc:mysql://127.0.0.1:3306/VehicleRental?user=root&password=";
+	private static String urlLocal = "jdbc:mysql://127.0.0.1:3306/vehiclerental?user=root&password=";
 	
 
 	public static Connection connection() {

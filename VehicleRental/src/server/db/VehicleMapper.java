@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import shared.bo.Vehicle;
@@ -219,8 +220,8 @@ public class VehicleMapper {
 	   
 	 * @return 
 	 */
-	public Vector<Vehicle> getAllVehicles() {
-		Vector<Vehicle> result = new Vector<Vehicle>();
+	public ArrayList<Vehicle> getAllVehicles() {
+		ArrayList<Vehicle> result = new ArrayList<Vehicle>();
 
 		/* Datenbankverbindung wird geholt */
 		Connection con = DBConnection.connection();
@@ -230,7 +231,7 @@ public class VehicleMapper {
 			Statement stmt = con.createStatement();
 
 			
-			ResultSet rs = stmt.executeQuery("SELECT * FROM auto");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Vehicle");
 
 			/*
 			 * FÃ¼r jeden Eintrag im Suchergebnis wird nun ein UserProfile-Objekt
@@ -239,13 +240,12 @@ public class VehicleMapper {
 			while (rs.next()) {
 				// Ergebnis-Tupel in Objekt umwandeln
 				Vehicle p = new Vehicle();
-				p.setId(rs.getInt("AutoID"));
-				p.setBrand(rs.getString("Marke"));
-				p.setVehicleCategory(rs.getString("FZGTyp"));
-				p.setVehiclePerformance(rs.getInt("Leistung"));
+				p.setId(rs.getInt("VehicleID"));
+				p.setBrand(rs.getString("Model"));
+				p.setVehicleCategory(rs.getString("Category"));
 			
 				/* HinzufÃ¼gen des neuen Objekts zum Ergebnisvektor */
-				result.addElement(p);
+				result.add(p);
 			}
 			/* Sollte ein Fehler auftreten, wird der Fehler zurÃ¼ckgegeben */
 		} catch (SQLException e2) {

@@ -1,12 +1,28 @@
 package client;
-///*package de.hdm.VehicleRental.client;
+import com.google.gwt.core.client.GWT;
+
+import shared.VehicleRentalAdministration;
+import shared.VehicleRentalAdministrationAsync;
 //
-//import java.util.logging.Logger;
-//
-//import de.hdm.VehicleRental.client.ReportGeneratorAsync;
-//import de.hdm.VehicleRental.client.VehicleRentalAdministrationAsync;
-//
-//public class ClientsideSettings extends CommonSettings {
+public class ClientsideSettings {
+    
+    
+    
+    private static  VehicleRentalAdministration vehicleRentalAdministration=null;
+    
+    public static VehicleRentalAdministration getVehicleRentalAdministration() {
+	    // Gab es bislang noch keine BankAdministration-Instanz, dann...
+	    if (vehicleRentalAdministration == null) {
+	      // Zunächst instantiieren wir BankAdministration
+	      vehicleRentalAdministration = GWT.create(VehicleRentalAdministration.class);
+	    }
+
+	    // So, nun brauchen wir die BankAdministration nur noch zurückzugeben.
+	    return vehicleRentalAdministration;
+	  }
+   
+
+}
 //
 //	/**
 //	 * 

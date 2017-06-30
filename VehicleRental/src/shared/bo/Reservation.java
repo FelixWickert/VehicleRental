@@ -31,7 +31,7 @@ public class Reservation extends BusinessObject  {
 	   * ist deren Repräsentation in der Buchung nicht erforderlich.
 	   
 	 */
-	private int reservationNumber;
+	private int reservationID;
 	/**
 	 * 
 	 */
@@ -39,6 +39,10 @@ public class Reservation extends BusinessObject  {
 	/**
 	 * 
 	 */
+	
+	private int vehicleID;
+	
+	
 	private Vector allReservationsForVehicle;
 	/**
 	 * 
@@ -55,8 +59,18 @@ public class Reservation extends BusinessObject  {
 	 */
 
 
-	public int getReservationNumber() {
-	 	 return reservationNumber; 
+	public int getReservationID() {
+	 	 return reservationID; 
+	}
+	
+	public int getVehicleID(){
+	    
+	    return this.vehicleID; 
+	}
+	
+	public void setVehicleID(int vehicleID ){
+	    
+	    this.vehicleID=vehicleID;
 	}
 	/**
 	 * 
@@ -64,8 +78,8 @@ public class Reservation extends BusinessObject  {
 	   
 	 * @param reservationNumber 
 	 */
-	public void setReservationNumber(int reservationNumber) { 
-		 this.reservationNumber = reservationNumber; 
+	public void setReservationNumber(int reservationID) { 
+		 this.reservationID = reservationID; 
 	}
 	/**
 	 * 

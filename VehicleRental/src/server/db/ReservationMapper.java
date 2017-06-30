@@ -1,6 +1,12 @@
 package server.db;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
+
+import shared.bo.Reservation;
 
 public class ReservationMapper {
 
@@ -32,102 +38,40 @@ public class ReservationMapper {
 		 this.reservationMapper = reservationMapper; 
 	}
 
-	/**
-	 * 
-	   * Wiederholtes Schreiben eines Objekts in die Datenbank.
-	   * 
-	   * @param t das Objekt, das in die DB geschrieben werden soll
-	   * @return das als Parameter übergebene Objekt
-	   
-	 * @param reservationID 
-	 * @return 
-	 */
-	public ReservationMapper update(Integer reservationID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	public Reservation insert(Reservation r) { 
+	    Connection con = DBConnection.connection();
 
-	/**
-	 * 
-	   * Auslesen aller Buchungen.
-	   * 
-	   * @return Ein Vektor mit Transaction-Objekten, die sämtliche Buchungen
-	   *         repräsentieren. Bei evtl. Exceptions wird ein partiell gefüllter
-	   *         oder ggf. auch leerer Vetor zurückgeliefert.
-	   
-	 * @return 
-	 */
-	public Vector findAll() { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	    try {
+	      Statement stmt = con.createStatement();
 
-	/**
-	 * 
-	   * Diese statische Methode kann aufgrufen werden durch
-	   * <code>TransactionMapper.transactionMapper()</code>. Sie stellt die
-	   * Singleton-Eigenschaft sicher, indem Sie dafür sorgt, dass nur eine einzige
-	   * Instanz von <code>TransactionMapper</code> existiert.
-	   * <p>
-	   * 
-	   * <b>Fazit:</b> TransactionMapper sollte nicht mittels <code>new</code>
-	   * instantiiert werden, sondern stets durch Aufruf dieser statischen Methode.
-	   * 
-	   * @return DAS <code>TransactionMapper</code>-Objekt.
-	   * @see transactionMapper
-	   
-	 * @return 
-	 */
-	public static ReservationMapper reservationMapper() { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	      /*
+	       * Zunächst schauen wir nach, welches der momentan höchste
+	       * Primärschlüsselwert ist.
+	       */
+	      ResultSet rs = stmt.executeQuery("SELECT MAX(VehicleID) AS maxid "
+	          + "FROM reservation ");
 
-	/**
-	 * 
-	   * Suchen einer Buchung mit vorgegebener Buchungsnummer. Da diese eindeutig
-	   * ist, wird genau ein Objekt zur�ckgegeben.
-	   * 
-	   * @param id Primärschlüsselattribut (->DB)
-	   * @return Transaction-Objekt, das dem übergebenen Schlüssel entspricht, null
-	   *         bei nicht vorhandenem DB-Tupel.
-	   
-	 * @param reservationID 
-	 * @return 
-	 */
-	public ReservationMapper findByID(int reservationID) { 
-		// TODO Auto-generated method
-		return null;
-	 }
+	      // Wenn wir etwas zurückerhalten, kann dies nur einzeilig sein
+	      if (rs.next()) {
+	        /*
+	         * a erhält den bisher maximalen, nun um 1 inkrementierten
+	         * Primärschlüssel.
+	         */
+	        r.setId(rs.getInt("maxid") + 1);
 
-	/**
-	 * 
-	   * Löschen der Daten eines <code>Transaction</code>-Objekts aus der Datenbank.
-	   * 
-	   * @param t das aus der DB zu löschende "Objekt"
-	   
-	 * @param reservationID 
-	 */
-	public void delete(ReservationMapper reservationID) { 
-		// TODO Auto-generated method
-	 }
+	        stmt = con.createStatement();
 
-	/**
-	 * 
-	   * Einfügen eines <code>Transaction</code>-Objekts in die Datenbank. Dabei
-	   * wird auch der Primärschlüssel des übergebenen Objekts geprüft und ggf.
-	   * berichtigt.
-	   * 
-	   * @param t das zu speichernde Objekt
-	   * @return das bereits übergebene Objekt, jedoch mit ggf. korrigierter
-	   *         <code>id</code>.
-	   
-	 * @param reservationID 
-	 * @return 
-	 */
-	public ReservationMapper insert(ReservationMapper reservationID) { 
-		// TODO Auto-generated method
-		return null;
-	 } 
-
-}
+	        // Jetzt erst erfolgt die tatsächliche Einfügeoperation
+	        stmt.executeUpdate("INSERT INTO reservation (ReservationID, VehicleID) "
+	            + "VALUES ("
+	            + r.getReservationID()
+	            + ","
+	            + r.getVehicleID());
+	           
+	      }}
+	    
+	    catch (SQLException e2) {
+	      e2.printStackTrace();
+	    }
+return r;
+}}
