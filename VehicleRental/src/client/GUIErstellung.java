@@ -3,68 +3,27 @@ package client;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Vector;
-
-import com.google.gwt.cell.client.ButtonCell;
-import com.google.gwt.cell.client.Cell;
-import com.google.gwt.cell.client.CheckboxCell;
-import com.google.gwt.cell.client.ClickableTextCell;
-import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.cell.client.TextCell;
-import com.google.gwt.cell.client.TextInputCell;
-import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.Column;
-import com.google.gwt.user.cellview.client.DataGrid;
-import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DialogBox;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.DockPanel;
-import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.PopupPanel;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.SplitLayoutPanel;
-import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
-
-import client.Header;
-import client.Navigation;
-import client.ReservationGUI;
-import client.CompositeExample.OptionalTextBox;
-
 import shared.VehicleRentalAdministration;
 import shared.VehicleRentalAdministrationAsync;
+
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-import shared.bo.Reservation;
 import shared.bo.Vehicle;
 public class GUIErstellung implements EntryPoint {
     
@@ -259,29 +218,3 @@ RootPanel.get("main").add(a);
 
     
     
-    
-	
-	
-	/**    TextCell textCell = new TextCell();
-	Reservation a = new Reservation();
-	ClickEvent ev;
-	a.getAllReservationsForProfile(1);
-	ClickableTextCell bc = new ClickableTextCell();
-	
-	
-      // Create a cell that will interact with a value updater.
-
-      // Create a CellList that uses the cell.
-      CellList<String> cellList = new CellList<String>(bc);
-
-g
-      cellList.setRowCount(DAYS.size(), true);
-
-      // Push the data into the widget.
-      cellList.setRowData(0, DAYS);
-
-      // Add it to the root panel.
-      RootPanel.get().add(cellList);
-      
-      */
-
